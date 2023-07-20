@@ -2,8 +2,9 @@ import { styled } from "../../../stitches.config"
 
 
 export const LayoutCountainer = styled('div', {
-  maxWidth: '118rem',
   height: '100vh',
+  width: '100%',
+
 
   backgroundColor: '$black6',
 
