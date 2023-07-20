@@ -52,7 +52,7 @@ export const {
       7: '2.4rem',
       8: '3.2rem',
       9: '3.4rem',
-      header: '6.8rem',
+      header: '10rem',
       sidebar: '6.4rem'
     },
     fontSizes: {
@@ -100,23 +100,25 @@ export const globalStyles = globalCss({
   '@import':
     "url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Quicksand:wght@400;700&display=swap')",
   '*': {
-    boxSizing: 'border-box',
+    padding: 0,
     margin: 0,
+    boxSizing: 'border-box',
     outlineColor: '$primary1',
     '-webkit-font-smoothing': 'antialiased',
     '-moz-osx-font-smoothing': 'grayscale'
   },
   '#root, body': {
-    minHeight: '100vh'
+    minHeight: '100vh',
   },
   html: {
     fontFamily: '$sans',
-    fontSize: '62.5%'
+    fontSize: '62.5%',
+
   },
   body: {
     fontSize: '1.6rem',
     lineHeight: 1.5,
-    '-webkit-font-smoothing': 'antialiased'
+    '-webkit-font-smoothing': 'antialiased',
   },
   button: {
     cursor: 'pointer'
@@ -133,4 +135,5 @@ export const globalStyles = globalCss({
   'p, h1, h2, h3, h4, h5, h6': {
     overflowWrap: 'break-word'
   },
+  
 })
