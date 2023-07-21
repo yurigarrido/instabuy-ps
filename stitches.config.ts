@@ -8,7 +8,7 @@ export const {
   getCssText,
   theme,
   createTheme,
-  config
+  config,
 } = createStitches({
   theme: {
     colors: {
@@ -22,10 +22,10 @@ export const {
       primary3: '#D0F4CC',
       primary4: '#E6F6E5',
       secondary1: '#F3F5F9',
-      green1: "#B0DBA6",
-      green2: "#43B02A",
-      green3: "#399624",
-      orange: "#FF7E00",
+      green1: '#B0DBA6',
+      green2: '#43B02A',
+      green3: '#399624',
+      orange: '#FF7E00',
       danger1: '#D72B48',
       exit: '#FF1F1F',
       gray8: '#A2A4A4',
@@ -74,7 +74,7 @@ export const {
       64: '16rem',
       80: '20rem',
       header: '10rem',
-      sidebar: '6.4rem'
+      sidebar: '6.4rem',
     },
     fontSizes: {
       base: '1.4rem',
@@ -99,7 +99,7 @@ export const {
     },
     borderWidths: {
       1: '.1rem',
-      2: '.2rem'
+      2: '.2rem',
     },
     radii: {
       px: '1px',
@@ -111,20 +111,20 @@ export const {
     },
     fonts: {
       rounded: '"Quicksand", apple-system, sans-serif',
-      sans: '"Open Sans", apple-system, sans-serif'
+      sans: '"Open Sans", apple-system, sans-serif',
     },
     zIndices: {
       sidebar: 10,
       header: 15,
       popover: 20,
-      samplesFooter: 5
-    }
+      samplesFooter: 5,
+    },
   },
   media: {
     mobile: '(max-width: 640px)',
     tablet: '(min-width: 768px)',
-    desktop: '(min-width: 1024px)'
-  }
+    desktop: '(min-width: 1024px)',
+  },
 })
 
 export const globalStyles = globalCss({
@@ -136,7 +136,7 @@ export const globalStyles = globalCss({
     boxSizing: 'border-box',
     outlineColor: '$orange',
     '-webkit-font-smoothing': 'antialiased',
-    '-moz-osx-font-smoothing': 'grayscale'
+    '-moz-osx-font-smoothing': 'grayscale',
   },
   '#root, body': {
     minHeight: '100vh',
@@ -144,7 +144,6 @@ export const globalStyles = globalCss({
   html: {
     fontFamily: '$sans',
     fontSize: '62.5%',
-
   },
   body: {
     fontSize: '1.6rem',
@@ -152,19 +151,18 @@ export const globalStyles = globalCss({
     '-webkit-font-smoothing': 'antialiased',
   },
   button: {
-    cursor: 'pointer'
+    cursor: 'pointer',
   },
   'img, picture, video, canvas, svg': {
     display: 'block',
-    maxWidth: '100%'
+    maxWidth: '100%',
   },
   'input, button, textarea, select': {
     font: 'inherit',
     padding: 0,
-    margin: 0
+    margin: 0,
   },
   'p, h1, h2, h3, h4, h5, h6': {
-    overflowWrap: 'break-word'
+    overflowWrap: 'break-word',
   },
-  
 })

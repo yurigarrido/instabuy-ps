@@ -6,12 +6,11 @@ import { Footer } from '@/shared/components/footer'
 export const DefaultLayout = () => {
   return (
     <S.LayoutCountainer>
-      <Header/>
-    <S.Content>
-      <Outlet/>
-      <Footer/>
-    </S.Content>
+      <Header />
+      <S.Content>
+        <Outlet />
+        <Footer />
+      </S.Content>
     </S.LayoutCountainer>
   )
 }
-

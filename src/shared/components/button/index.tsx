@@ -1,8 +1,11 @@
-import { forwardRef, ForwardRefRenderFunction } from 'react'
+import React, {
+  forwardRef,
+  ForwardRefRenderFunction,
+  ComponentProps,
+} from 'react'
 import { Spinner } from '../spinner'
 import * as S from './styles'
 
-import React, { ComponentProps } from 'react'
 import { Container } from './styles'
 
 export type ButtonProps = Omit<ComponentProps<typeof Container>, 'css'> & {
@@ -12,7 +15,6 @@ export type ButtonProps = Omit<ComponentProps<typeof Container>, 'css'> & {
   contextId?: string
   full?: boolean
 }
-
 
 const ButtonFC: ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
   {
@@ -29,7 +31,7 @@ const ButtonFC: ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
     contextId,
     ...props
   },
-  ref
+  ref,
 ) => {
   return (
     <S.Container

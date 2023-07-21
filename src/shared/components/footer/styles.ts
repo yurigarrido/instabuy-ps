@@ -1,4 +1,4 @@
-import { styled } from "../../../../stitches.config";
+import { styled } from '../../../../stitches.config'
 
 export const Container = styled('footer', {
   width: '100%',
@@ -26,6 +26,5 @@ export const AboutContainer = styled('div', {
   flexWrap: 'wrap',
   justifyContent: 'space-between',
 
-
-  border: '1px solid red'
+  border: '1px solid red',
 })
