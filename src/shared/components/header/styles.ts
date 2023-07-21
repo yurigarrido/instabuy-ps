@@ -1,4 +1,4 @@
-import { styled } from "../../../../stitches.config";
+import { styled } from '../../../../stitches.config'
 
 export const Container = styled('header', {
   width: '100%',
@@ -6,12 +6,14 @@ export const Container = styled('header', {
 
   height: '$header',
 
-  position: "fixed",
+  position: 'fixed',
   top: '0',
 
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+
+  padding: '$12',
 })
 
 export const Wrapper = styled('div', {
@@ -27,7 +29,7 @@ export const Logo = styled('img', {
   height: '64px',
   width: '64px',
 
-  objectFit: 'cover'
+  objectFit: 'cover',
 })
 
 export const SearchBar = styled('div', {
@@ -37,8 +39,8 @@ export const SearchBar = styled('div', {
     height: '$16',
     width: '40rem',
 
-    padding: '$4'
-  }
+    padding: '$4',
+  },
 })
 
 export const FlexContainer = styled('div', {

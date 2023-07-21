@@ -1,25 +1,25 @@
-import { keyframes, styled } from "../../../../stitches.config"
+import { keyframes, styled } from '../../../../stitches.config'
 
 const scaleAnimation = keyframes({
   from: {
     opacity: 0,
     width: 0,
-    height: 0
+    height: 0,
   },
   to: {
     opacity: 1,
     width: '1em',
-    height: '1em'
-  }
+    height: '1em',
+  },
 })
 
 const spinnerAnimation = keyframes({
   from: {
-    transform: 'rotate(0deg)'
+    transform: 'rotate(0deg)',
   },
   to: {
-    transform: 'rotate(360deg)'
-  }
+    transform: 'rotate(360deg)',
+  },
 })
 
 export const Container = styled('div', {
@@ -35,19 +35,19 @@ export const Container = styled('div', {
     border: '.14em solid currentColor',
     borderBottomColor: 'transparent',
     borderRadius: '100%',
-    animation: `${spinnerAnimation} .8s ease infinite, ${scaleAnimation} .1s linear`
+    animation: `${spinnerAnimation} .8s ease infinite, ${scaleAnimation} .1s linear`,
   },
   variants: {
     position: {
       left: {
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
       },
       center: {
-        justifyContent: 'center'
+        justifyContent: 'center',
       },
       right: {
-        justifyContent: 'flex-end'
-      }
-    }
-  }
+        justifyContent: 'flex-end',
+      },
+    },
+  },
 })

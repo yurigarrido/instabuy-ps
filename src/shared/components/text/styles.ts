@@ -1,10 +1,11 @@
-import { styled } from "../../../../stitches.config";
+import { styled } from '../../../../stitches.config'
 
 export const Text = styled('p', {
   fontFamily: '$default',
   lineHeight: '$base',
   margin: 0,
   color: '$gray100',
+  cursor: 'default',
 
   variants: {
     size: {
@@ -24,14 +25,12 @@ export const Text = styled('p', {
     },
     bold: {
       true: {
-        fontWeight: 'bold'
-      }
-    }
+        fontWeight: 'bold',
+      },
+    },
   },
 
   defaultVariants: {
     size: 'md',
   },
 })
-
-

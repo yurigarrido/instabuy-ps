@@ -1,14 +1,14 @@
-import { keyframes, styled } from "../../../../stitches.config"
+import { keyframes, styled } from '../../../../stitches.config'
 
 const pulseAnimation = keyframes({
   from: {
-    transform: 'translate(-50%, -50%)'
+    transform: 'translate(-50%, -50%)',
   },
   to: {
     width: 'calc(100% + 1.5rem)',
     height: 'calc(100% + 1.5rem)',
-    opacity: 0
-  }
+    opacity: 0,
+  },
 })
 
 export const Container = styled('button', {
@@ -28,39 +28,39 @@ export const Container = styled('button', {
   color: '$$color',
   backgroundColor: 'transparent',
   '*': {
-    flexShrink: '0'
+    flexShrink: '0',
   },
   '&:after': {
     opacity: 0,
     display: 'block',
     zIndex: -2,
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
   },
   '&:hover:not(&:disabled)': {
     '&:before, &:after': {
       width: 'calc(100% + .3rem)',
-      height: 'calc(100% + .3rem)'
-    }
+      height: 'calc(100% + .3rem)',
+    },
   },
   '&:active': {
     '&:before, &:after': {
       width: 'calc(100% - .4rem)',
-      height: 'calc(100% - .4rem)'
-    }
+      height: 'calc(100% - .4rem)',
+    },
   },
   '&:focus': {
     '&:before, &:after': {
       width: 'calc(100% - .1rem)',
       height: 'calc(100% - .1rem)',
-      filter: 'brightness(.9)'
+      filter: 'brightness(.9)',
     },
     '&:after': {
       opacity: 0.7,
       animationName: pulseAnimation,
       animationDelay: '.1s',
       animationDuration: '.3s',
-      animationTimingFunction: 'linear'
-    }
+      animationTimingFunction: 'linear',
+    },
   },
   '&:after, &:before': {
     content: '',
@@ -73,91 +73,91 @@ export const Container = styled('button', {
     backgroundColor: '$$background',
     borderRadius: '$sm',
     height: '100%',
-    width: '100%'
+    width: '100%',
   },
   '&:before': {
     willChange: 'width, height',
-    zIndex: -1
+    zIndex: -1,
   },
   '&:disabled': {
     $$background: '$colors$gray4',
-    cursor: 'not-allowed'
+    cursor: 'not-allowed',
   },
   variants: {
     full: {
       true: {
-        width: '100%'
-      }
+        width: '100%',
+      },
     },
     alignContent: {
       left: {
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
       },
       right: {
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-end',
       },
       center: {
-        justifyContent: 'center'
-      }
+        justifyContent: 'center',
+      },
     },
     color: {
       primary: {
         $$background: '$colors$green2',
-        $$color: 'white'
+        $$color: 'white',
       },
       white: {
         $$background: '$colors$white',
         $$color: 'black',
 
         '&:hover': {
-          $$background: '$colors$blue1'
-        }
+          $$background: '$colors$blue1',
+        },
       },
       red: {
         $$background: '$colors$danger1',
-        $$color: 'white'
-      }
+        $$color: 'white',
+      },
     },
     size: {
       lg: {
-        $$height: '4.8rem'
+        $$height: '4.8rem',
       },
       sm: {
-        $$height: '3.4rem'
-      }
+        $$height: '3.4rem',
+      },
     },
     fill: {
       outlined: {
         color: '$$background',
         '&:before, &:after': {
           outline: '1px solid $$background',
-          backgroundColor: 'transparent'
-        }
+          backgroundColor: 'transparent',
+        },
       },
       solid: {
         '&:before, &:after': {
           backgroundColor: '$$background',
-          color: '$$color'
-        }
-      }
+          color: '$$color',
+        },
+      },
     },
     font: {
       rounded: {
-        fontFamily: '$rounded'
+        fontFamily: '$rounded',
       },
       sans: {
-        fontFamily: '$sans'
-      }
+        fontFamily: '$sans',
+      },
     },
     weight: {
       bold: {
-        fontWeight: '700'
+        fontWeight: '700',
       },
       normal: {
-        fontWeight: '400'
-      }
-    }
-  }
+        fontWeight: '400',
+      },
+    },
+  },
 })
 
 export const Loading = styled('div', {})
