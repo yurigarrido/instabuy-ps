@@ -12,6 +12,8 @@ export const Container = styled('header', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+
+  padding: '$12',
 })
 
 export const Wrapper = styled('div', {

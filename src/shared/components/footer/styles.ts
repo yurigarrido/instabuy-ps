@@ -11,20 +11,37 @@ export const Container = styled('footer', {
 
 export const Wrapper = styled('div', {
   display: 'flex',
+  gap: '$12',
+  flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
 
   maxWidth: '118rem',
   width: '100%',
+
+  padding: '$12',
 })
 
 export const AboutContainer = styled('div', {
   width: '100%',
 
-  display: 'flex',
-  flexDirection: 'row',
-  flexWrap: 'wrap',
+  display: 'grid',
+  gridGap: '$12',
+  gridTemplateColumns: 'repeat(auto-fill, 300px)',
   justifyContent: 'space-between',
+})
 
-  border: '1px solid red',
+export const DescriptionContainer = styled('div', {
+  padding: '$12 0',
+
+  borderTop: '2px solid $blue1',
+  borderBottom: '2px solid $blue1',
+
+  display: 'flex',
+  flexDirection: 'column',
+})
+
+export const LogoContainer = styled('div', {
+  display: 'flex',
+  gap: '$4',
 })
