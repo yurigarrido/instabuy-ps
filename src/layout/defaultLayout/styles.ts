@@ -6,6 +6,7 @@ export const LayoutCountainer = styled('div', {
   width: '100%',
 
 
+  // backgroundColor: '$blue1',
   backgroundColor: '$black6',
 
 
