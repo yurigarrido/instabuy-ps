@@ -81,6 +81,7 @@ export const Container = styled('button', {
   },
   '&:disabled': {
     $$background: '$colors$gray4',
+    border: 'none',
     cursor: 'not-allowed',
   },
   variants: {
@@ -115,6 +116,10 @@ export const Container = styled('button', {
       },
       red: {
         $$background: '$colors$danger1',
+        $$color: 'white',
+      },
+      orange: {
+        $$background: '$colors$orange',
         $$color: 'white',
       },
     },
@@ -155,6 +160,13 @@ export const Container = styled('button', {
       },
       normal: {
         fontWeight: '400',
+      },
+    },
+    circle: {
+      true: {
+        '&:after, &:before': {
+          borderRadius: '$full',
+        },
       },
     },
   },

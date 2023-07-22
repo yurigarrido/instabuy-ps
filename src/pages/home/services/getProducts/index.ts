@@ -2,11 +2,11 @@ import { api } from '@/shared/api'
 import { ProductsData } from './types'
 import { Product } from '../../models/product'
 
-export const getProducts = async (): Promise<Product[]> => {
+export const getProducts = async (page: number): Promise<Product[]> => {
   const {
     data: { data },
   } = await api.get<ProductsData>('/', {
-    params: { subdomain: 'supermercado', N: 10 },
+    params: { subdomain: 'supermercado', N: 30, page },
   })
   const parsedProducts = data.map((product) => {
     return {
