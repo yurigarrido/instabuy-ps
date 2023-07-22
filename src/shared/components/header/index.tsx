@@ -2,12 +2,14 @@ import { ShoppingCart, UserCircle } from 'phosphor-react'
 import * as S from './styles'
 import { Button } from '../button'
 import { Text } from '../text'
+import { useNavigate } from 'react-router'
 
 export const Header = () => {
+  const navigate = useNavigate()
   return (
     <S.Container>
       <S.Wrapper>
-        <S.FlexContainer>
+        <S.FlexContainer onClick={() => navigate('/')}>
           <div>
             <S.Logo
               src="https://ibassets.com.br/ib.store.image.medium/m-0cd410fa3a4844acb4294a0edfea3822.png"
@@ -28,7 +30,6 @@ export const Header = () => {
             Carrinho
           </Button>
           <Button color="white" leftIcon={<UserCircle size={20} />}>
-            {' '}
             Minha conta
           </Button>
         </S.FlexContainer>

@@ -1,11 +1,9 @@
 import { styled } from '../../../stitches.config'
 
 export const LayoutCountainer = styled('div', {
-  height: '100vh',
   width: '100%',
 
-  // backgroundColor: '$blue1',
-  backgroundColor: '$black6',
+  backgroundColor: '$blue1',
 
   display: 'flex',
   flexDirection: 'column',

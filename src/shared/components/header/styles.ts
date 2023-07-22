@@ -12,14 +12,14 @@ export const Container = styled('header', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-
-  padding: '$12',
 })
 
 export const Wrapper = styled('div', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
+
+  padding: '$12',
 
   maxWidth: '118rem',
   width: '100%',
