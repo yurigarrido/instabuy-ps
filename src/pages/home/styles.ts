@@ -13,12 +13,6 @@ export const Container = styled('div', {
   margin: '$10 auto',
 })
 
-export const CarrouselContainer = styled('div', {
-  backgroundColor: '$white',
-  padding: '$12 0',
-  borderRadius: '$md',
-})
-
 export const Heading = styled('div', {
   display: 'flex',
   marginBottom: '$10',
@@ -27,6 +21,18 @@ export const Heading = styled('div', {
 
   svg: {
     color: '$orange',
+  },
+})
+
+export const CarrouselContainer = styled('div', {
+  backgroundColor: '$white',
+  padding: '$8 0',
+  borderRadius: '$md',
+
+  width: '100%',
+
+  [` > ${Heading}`]: {
+    paddingLeft: '$8',
   },
 })
 

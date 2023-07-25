@@ -43,7 +43,7 @@ export const Product = ({
       <div>
         <S.Image
           loading={!imageLoaded}
-          src={generateImageUrl(product.imageUrl)}
+          src={generateImageUrl(product.imageUrl, 'medium')}
           onLoad={handleImageLoad}
           alt=""
         />

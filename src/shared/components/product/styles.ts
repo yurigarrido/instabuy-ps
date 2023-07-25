@@ -40,7 +40,7 @@ export const PriceContainer = styled('div', {
 
 export const Product = styled('div', {
   backgroundColor: '$white',
-  miWidth: '270px',
+  width: '270px',
 
   position: 'relative',
 

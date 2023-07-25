@@ -2,7 +2,7 @@ import { Text } from '@/shared/components/text'
 import * as S from './styles'
 import { generateBannerUrl } from '@/shared/constants'
 import { Carrousel } from '@/shared/components/carrousel'
-import { MagnifyingGlass } from 'phosphor-react'
+import { Lightning, MagnifyingGlass } from 'phosphor-react'
 import { Pagination, Product } from './components'
 import { useProductsContext } from './context/products/products'
 import { Banners } from '@/shared/components/banners'
@@ -39,18 +39,26 @@ export const Home = () => {
         })}
       </Banners>
       <S.FlexContainer>
-        <Carrousel>
-          {products.slice(1, 15).map((product, index) => {
-            return (
-              <Product
-                product={product}
-                key={product.id}
-                position={index}
-                slider
-              />
-            )
-          })}
-        </Carrousel>
+        <S.CarrouselContainer>
+          <S.Heading>
+            <Lightning size={36} />
+            <Text size="5xl" bold>
+              Ofertas
+            </Text>
+          </S.Heading>
+          <Carrousel itemsPerView={4.6} showControls>
+            {products.slice(1, 15).map((product, index) => {
+              return (
+                <Product
+                  product={product}
+                  key={product.id}
+                  position={index}
+                  slider
+                />
+              )
+            })}
+          </Carrousel>
+        </S.CarrouselContainer>
       </S.FlexContainer>
 
       <S.ProductsView>

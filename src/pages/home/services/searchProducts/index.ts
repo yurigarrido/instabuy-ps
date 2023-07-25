@@ -18,7 +18,7 @@ export const searchProducts = async (query: string): Promise<Product[]> => {
       id: product.id,
       imageUrl: product.images[0],
       description: product.description,
-      name: product.brand,
+      name: product.name,
       slug: product.slug,
       price: product.prices[0].price,
     }
