@@ -6,8 +6,20 @@ import { MagnifyingGlass } from 'phosphor-react'
 import { Pagination, Product } from './components'
 import { useProductsContext } from './context/products/products'
 import { Banners } from '@/shared/components/banners'
+import { useQuery } from 'react-query'
+import { getBanners } from './services/getBanners'
+import { useState } from 'react'
+import { Banner } from './models/banner'
+
 export const Home = () => {
-  const { isLoading, products, banners } = useProductsContext()
+  const { isLoading, products } = useProductsContext()
+  const [banners, setBanners] = useState<Banner[]>([])
+
+  useQuery('banners', () => getBanners(), {
+    onSuccess(data) {
+      setBanners(data.filter((banner) => banner.isDesktop))
+    },
+  })
 
   if (isLoading) return 'Carregando..'
 

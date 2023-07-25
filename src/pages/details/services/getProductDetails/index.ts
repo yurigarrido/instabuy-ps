@@ -1,11 +1,11 @@
 import { api } from '@/shared/api'
 import { ProductData } from './types'
-import { Product } from '../../models/product'
+import { Product } from '../../../home/models/product'
 
 export const getProductDetails = async (slug: string): Promise<Product> => {
   const {
     data: { data },
-  } = await api.get<ProductData>('/', {
+  } = await api.get<ProductData>('/item', {
     params: { subdomain: 'supermercado', slug },
   })
 

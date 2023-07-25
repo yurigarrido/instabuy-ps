@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query'
-import { getProductDetails } from '../home/services/getProductDetails'
+import { getProductDetails } from './services/getProductDetails'
 import { useParams } from 'react-router'
 import { useState } from 'react'
 
