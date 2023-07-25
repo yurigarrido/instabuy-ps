@@ -34,12 +34,29 @@ export const Logo = styled('img', {
 
 export const SearchBar = styled('div', {
   display: 'flex',
+  justifyContent: 'center',
+
+  position: 'relative',
 
   input: {
     height: '$16',
     width: '40rem',
 
     padding: '$4',
+  },
+
+  button: {
+    position: 'absolute',
+    right: '1rem',
+    top: '1rem',
+    cursor: 'pointer',
+
+    border: 'none',
+    backgroundColor: 'transparent',
+
+    '&:hover': {
+      color: '$orange',
+    },
   },
 })
 

@@ -22,6 +22,5 @@ export const getProductsFromCategory = async (): Promise<Product[]> => {
       price: product.prices[0].price,
     }
   })
-  console.log({ parsedProducts })
   // return parsedProducts
 }

@@ -1,2 +1,2 @@
 export * from './pagination'
-export * from './product'
+export * from '../../../shared/components/product'

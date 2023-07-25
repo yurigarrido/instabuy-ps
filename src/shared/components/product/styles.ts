@@ -1,5 +1,5 @@
 import { Button } from '@/shared/components/button'
-import { styled } from '../../../../../stitches.config'
+import { styled } from '../../../../stitches.config'
 
 export const CartButton = styled(Button, {
   display: 'flex',

@@ -1,17 +1,16 @@
 import { generateImageUrl } from '@/shared/constants'
-import { Product as ProductType } from '../../models/product'
+import { Product as ProductType } from '../../../pages/home/models/product'
 import * as S from './styles'
 import { useNavigate } from 'react-router-dom'
 import { formatCurrency } from '@/shared/utils/formatter'
 import { Text } from '@/shared/components/text'
-import { Button } from '@/shared/components/button'
 import { Plus } from 'phosphor-react'
-import { useShoppingCartContext } from '../../context/cart/cart'
-import { searchProducts } from '../../services/searchProducts'
+import { useShoppingCartContext } from '../../../pages/home/context/cart/cart'
+import { toast } from 'react-hot-toast'
 
 interface ProductProps {
   product: ProductType
-  position: number
+  position?: number
   slider?: boolean
 }
 
@@ -25,8 +24,8 @@ export const Product = ({
   const navigate = useNavigate()
 
   const handleAddProductIntoCart = (product: ProductType) => {
-    // addProduct(product)
-    searchProducts('coca')
+    addProduct(product)
+    toast.success('Item adicionado ao carrinho.')
   }
 
   return (
