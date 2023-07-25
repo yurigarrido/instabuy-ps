@@ -7,7 +7,7 @@ import { Text } from '@/shared/components/text'
 import { Plus } from 'phosphor-react'
 import { useShoppingCartContext } from '../../../pages/home/context/cart/cart'
 import { toast } from 'react-hot-toast'
-import ProgressiveImage from 'react-progressive-graceful-image'
+import { useState } from 'react'
 
 interface ProductProps {
   product: ProductType
@@ -21,6 +21,7 @@ export const Product = ({
   slider = false,
 }: ProductProps) => {
   const { addProduct } = useShoppingCartContext()
+  const [imageLoaded, setImageLoaded] = useState(false)
 
   const navigate = useNavigate()
 
@@ -29,21 +30,25 @@ export const Product = ({
     toast.success(`${product.name} adicionado ao carrinho`)
   }
 
+  const handleImageLoad = () => {
+    setTimeout(() => setImageLoaded(true), 1000)
+  }
+
   return (
     <S.Product
       className={slider ? `keen-slider__slide number-slide${position}` : ''}
       key={product.id}
       onClick={() => navigate(`/product/${product.slug}`)}
     >
-      <ProgressiveImage
-        delay={500}
-        src={generateImageUrl(product.imageUrl)}
-        placeholder={generateImageUrl(product.imageUrl)}
-      >
-        {(src, loading) =>
-          loading ? <S.ImageSkeleton /> : <S.Image src={src} alt="" />
-        }
-      </ProgressiveImage>
+      <div>
+        <S.Image
+          loading={!imageLoaded}
+          src={generateImageUrl(product.imageUrl)}
+          onLoad={handleImageLoad}
+          alt=""
+        />
+        {!imageLoaded && <S.ImageSkeleton />}
+      </div>
 
       <S.PriceContainer>
         <S.Price>

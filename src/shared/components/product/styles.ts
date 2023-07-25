@@ -74,11 +74,14 @@ export const shimmerCSS = {
 }
 
 export const ImageSkeleton = styled('div', {
+  position: 'absolute',
+  top: '0px',
+
   height: '180px',
   width: '160px',
   borderRadius: '$md',
   animation: `${shimmerAnimation} 1.5s ease infinite`,
-  background: '$gray3',
+  background: '$gray2',
 })
 
 export const Image = styled('img', {
@@ -89,9 +92,7 @@ export const Image = styled('img', {
   variants: {
     loading: {
       true: {
-        border: '1px solid red',
-        height: '150px',
-        animation: `${shimmerAnimation} 1.5s ease infinite`,
+        opacity: 0,
       },
     },
   },
