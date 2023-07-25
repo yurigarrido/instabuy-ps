@@ -6,28 +6,18 @@ export const Container = styled('div', {
   overflow: 'hidden',
 
   display: 'flex',
-  justifyContent: 'center',
   flexWrap: 'wrap',
   gap: '$10',
 
   margin: '$10 auto',
 })
 
-export const CarrouselContainer = styled('div', {
-  backgroundColor: '$white',
-  padding: '$12 0',
-  borderRadius: '$md',
-})
+export const InformationsContainer = styled('div', {
+  alignSelf: 'flex-start',
 
-export const Heading = styled('div', {
   display: 'flex',
-  marginBottom: '$10',
-  alignItems: 'center',
+  flexDirection: 'column',
   gap: '$4',
-
-  svg: {
-    color: '$orange',
-  },
 })
 
 export const ProductsView = styled('div', {
@@ -48,10 +38,4 @@ export const FlexContainer = styled('div', {
   width: '100%',
   flexDirection: 'row',
   gap: '$6',
-})
-
-export const BannerImg = styled('img', {
-  height: '295px',
-  objectFit: 'contain',
-  borderRadius: '$md',
 })

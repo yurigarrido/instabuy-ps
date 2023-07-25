@@ -13,7 +13,7 @@ export const Container = styled('header', {
   alignItems: 'center',
   justifyContent: 'center',
 
-  padding: '$12',
+  zIndex: '$header',
 })
 
 export const Wrapper = styled('div', {
@@ -34,6 +34,9 @@ export const Logo = styled('img', {
 
 export const SearchBar = styled('div', {
   display: 'flex',
+  justifyContent: 'center',
+
+  position: 'relative',
 
   input: {
     height: '$16',
@@ -41,10 +44,42 @@ export const SearchBar = styled('div', {
 
     padding: '$4',
   },
+
+  button: {
+    position: 'absolute',
+    right: '1rem',
+    top: '1rem',
+    cursor: 'pointer',
+
+    border: 'none',
+    backgroundColor: 'transparent',
+
+    '&:hover': {
+      color: '$orange',
+    },
+  },
 })
 
 export const FlexContainer = styled('div', {
   display: 'flex',
   alignItems: 'center',
   gap: '$4',
+})
+
+export const CartCount = styled('div', {
+  position: 'absolute',
+
+  top: '-6px',
+  right: '-6px',
+
+  backgroundColor: '$danger1',
+  height: '$10',
+  width: '$10',
+  borderRadius: '$full',
+
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  color: '$white',
+  fontWeight: 'bold',
 })
