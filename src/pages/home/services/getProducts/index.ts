@@ -5,7 +5,7 @@ import { Product } from '../../models/product'
 export const getProducts = async (page: number): Promise<Product[]> => {
   const {
     data: { data },
-  } = await api.get<ProductsData>('/', {
+  } = await api.get<ProductsData>('/item', {
     params: { subdomain: 'supermercado', N: 30, page },
   })
   const parsedProducts = data.map((product) => {

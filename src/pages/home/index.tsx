@@ -1,43 +1,43 @@
 import { Text } from '@/shared/components/text'
 import * as S from './styles'
-import { generateImageUrl } from '@/shared/constants'
+import { generateBannerUrl, generateImageUrl } from '@/shared/constants'
 import { formatCurrency } from '@/shared/utils/formatter'
 import { useNavigate } from 'react-router'
 import { Carrousel } from '@/shared/components/carrousel'
 import { MagnifyingGlass } from 'phosphor-react'
-import { Pagination } from './components'
+import { Pagination, Product } from './components'
 import { useProductsContext } from './context/products/products'
+import { Banners } from '@/shared/components/banners'
 export const Home = () => {
   const navigate = useNavigate()
-  const { isLoading, products } = useProductsContext()
+  const { isLoading, products, banners } = useProductsContext()
 
   if (isLoading) return 'Carregando..'
 
   return (
     <S.Container>
+      <Banners>
+        {banners.map((banner, index) => {
+          return (
+            <S.BannerImg
+              className={`keen-slider__slide number-slide${index}`}
+              key={banner.id}
+              src={generateBannerUrl(banner.imageUrl)}
+              alt=""
+            />
+          )
+        })}
+      </Banners>
       <S.FlexContainer>
         <Carrousel>
-          {products.slice(0, 15).map((product, index) => {
+          {products.slice(1, 15).map((product, index) => {
             return (
-              <S.Product
-                className={`keen-slider__slide number-slide${index}`}
+              <Product
+                product={product}
                 key={product.id}
-                onClick={() => navigate(`/product/${product.slug}`)}
-              >
-                <img
-                  src={generateImageUrl(product.imageUrl)}
-                  alt={product.slug}
-                />
-                <div>
-                  <Text size="4xl" bold>
-                    {formatCurrency(product.price)}
-                  </Text>
-                  <Text size="2xl" bold>
-                    {formatCurrency(product.price * 1.1)}
-                  </Text>
-                </div>
-                <Text size="2xl">{product.name}</Text>
-              </S.Product>
+                position={index}
+                slider
+              />
             )
           })}
         </Carrousel>
@@ -51,19 +51,9 @@ export const Home = () => {
           </Text>
         </S.Heading>
         <S.FlexContainer>
-          {products.slice(15, products.length).map((product) => {
+          {products.slice(15, products.length).map((product, index) => {
             return (
-              <S.Product
-                key={product.id}
-                onClick={() => navigate(`/product/${product.slug}`)}
-              >
-                <img
-                  src={generateImageUrl(product.imageUrl)}
-                  alt={product.slug}
-                />
-                <Text size="2xl">{product.name}</Text>
-                <Text size="4xl">{formatCurrency(product.price)}</Text>
-              </S.Product>
+              <Product product={product} key={product.id} position={index} />
             )
           })}
         </S.FlexContainer>

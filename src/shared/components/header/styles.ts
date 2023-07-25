@@ -21,8 +21,6 @@ export const Wrapper = styled('div', {
   alignItems: 'center',
   justifyContent: 'space-between',
 
-  padding: '$12',
-
   maxWidth: '118rem',
   width: '100%',
 })
@@ -49,4 +47,22 @@ export const FlexContainer = styled('div', {
   display: 'flex',
   alignItems: 'center',
   gap: '$4',
+})
+
+export const CartCount = styled('div', {
+  position: 'absolute',
+
+  top: '-6px',
+  right: '-6px',
+
+  backgroundColor: '$danger1',
+  height: '$10',
+  width: '$10',
+  borderRadius: '$full',
+
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  color: '$white',
+  fontWeight: 'bold',
 })

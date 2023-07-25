@@ -30,31 +30,6 @@ export const Heading = styled('div', {
   },
 })
 
-export const Product = styled('div', {
-  backgroundColor: '$white',
-  miWidth: '270px',
-
-  padding: '$8',
-  borderRadius: '$md',
-
-  cursor: 'pointer',
-  border: '1px solid $white',
-
-  img: {
-    width: '160px',
-    objectFit: 'cover',
-    marginBottom: '$8',
-  },
-
-  '&:hover': {
-    transition: '.3s border ease',
-    border: '1px solid $orange',
-    '-webkit-box-shadow': ' 0px 0px 10px 0px rgba(0,0,0,0.25)',
-    '-moz-box-shadow': ' 0px 0px 10px 0px rgba(0,0,0,0.25)',
-    'box-shadow': '0px 0px 10px 0px rgba(0,0,0,0.25)',
-  },
-})
-
 export const ProductsView = styled('div', {
   display: 'flex',
   flexDirection: 'column',
@@ -73,4 +48,10 @@ export const FlexContainer = styled('div', {
   width: '100%',
   flexDirection: 'row',
   gap: '$6',
+})
+
+export const BannerImg = styled('img', {
+  height: '295px',
+  objectFit: 'contain',
+  borderRadius: '$md',
 })

@@ -14,6 +14,10 @@ export const Container = styled('div', {
   gap: '$4',
 
   boxSizing: 'border-box',
+
+  '> .keen-slider': {
+    padding: '$4 0',
+  },
 })
 
 const CarrouselButton = styled(Button, {
