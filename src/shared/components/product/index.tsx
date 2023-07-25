@@ -26,7 +26,7 @@ export const Product = ({
 
   const handleAddProductIntoCart = (product: ProductType) => {
     addProduct(product)
-    toast.success('Item adicionado ao carrinho.')
+    toast.success(`${product.name} adicionado ao carrinho`)
   }
 
   return (

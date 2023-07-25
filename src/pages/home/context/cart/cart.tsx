@@ -35,13 +35,15 @@ function useShoppingCart() {
     [cartProducts],
   )
 
+  const count = cartProducts.reduce((sum, prod) => sum + prod.quantity, 0)
+
   return useMemo(
     () => ({
       addProduct,
       cartProducts,
-      count: cartProducts.length,
+      count,
     }),
-    [addProduct, cartProducts],
+    [addProduct, cartProducts, count],
   )
 }
 export const [ShoppingCartProvider, useShoppingCartContext] =
