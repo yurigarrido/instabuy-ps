@@ -7,6 +7,7 @@ import { Text } from '@/shared/components/text'
 import { Plus } from 'phosphor-react'
 import { useShoppingCartContext } from '../../../pages/home/context/cart/cart'
 import { toast } from 'react-hot-toast'
+import ProgressiveImage from 'react-progressive-graceful-image'
 
 interface ProductProps {
   product: ProductType
@@ -34,11 +35,16 @@ export const Product = ({
       key={product.id}
       onClick={() => navigate(`/product/${product.slug}`)}
     >
-      <img
+      <ProgressiveImage
+        delay={500}
         src={generateImageUrl(product.imageUrl)}
-        alt={product.slug}
-        loading="lazy"
-      />
+        placeholder={generateImageUrl(product.imageUrl)}
+      >
+        {(src, loading) =>
+          loading ? <S.ImageSkeleton /> : <S.Image src={src} alt="" />
+        }
+      </ProgressiveImage>
+
       <S.PriceContainer>
         <S.Price>
           <Text size="4xl" bold>

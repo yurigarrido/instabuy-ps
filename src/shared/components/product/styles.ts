@@ -1,5 +1,5 @@
 import { Button } from '@/shared/components/button'
-import { styled } from '../../../../stitches.config'
+import { keyframes, styled } from '../../../../stitches.config'
 
 export const CartButton = styled(Button, {
   display: 'flex',
@@ -50,17 +50,49 @@ export const Product = styled('div', {
   cursor: 'pointer',
   border: '1px solid $white',
 
-  img: {
-    width: '160px',
-    objectFit: 'cover',
-    marginBottom: '$8',
-  },
-
   '&:hover': {
     transition: '.3s border ease',
 
     [` > ${CartButton}`]: {
       display: 'flex',
+    },
+  },
+})
+
+const shimmerAnimation = keyframes({
+  'from, 100%': {
+    opacity: 1,
+  },
+  '50%': {
+    opacity: 0.2,
+  },
+})
+
+export const shimmerCSS = {
+  backgroundColor: '$gray2',
+  animation: `${shimmerAnimation} 1.5s ease infinite`,
+}
+
+export const ImageSkeleton = styled('div', {
+  height: '180px',
+  width: '160px',
+  borderRadius: '$md',
+  animation: `${shimmerAnimation} 1.5s ease infinite`,
+  background: '$gray3',
+})
+
+export const Image = styled('img', {
+  width: '160px',
+  objectFit: 'cover',
+  marginBottom: '$8',
+
+  variants: {
+    loading: {
+      true: {
+        border: '1px solid red',
+        height: '150px',
+        animation: `${shimmerAnimation} 1.5s ease infinite`,
+      },
     },
   },
 })
