@@ -5,12 +5,15 @@ import { Product } from '../../models/product'
 import { useQuery } from 'react-query'
 import { getBanners } from '../../services/getBanners'
 import { Banner } from '../../models/banner'
+import { useLayoutContext } from '@/layout/context'
 
 function useProducts() {
   const [products, setProducts] = useState<Product[]>([])
   const [banners, setBanners] = useState<Banner[]>([])
   const [loadingMoreProducts, setloadingMoreProducts] = useState(false)
   const [pagination, setPagination] = useState<number>(2)
+
+  const { loaded, loading } = useLayoutContext()
 
   const defaultPage = 1
   const { isLoading } = useQuery('products', () => getProducts(defaultPage), {
@@ -27,11 +30,13 @@ function useProducts() {
 
   const getMoreProducts = useCallback(async () => {
     setloadingMoreProducts(true)
+    loading()
     const products = await getProducts(pagination)
     setPagination((prevPagination) => prevPagination + 1)
     setloadingMoreProducts(false)
+    loaded()
     setProducts((previousProducts) => [...previousProducts, ...products])
-  }, [pagination])
+  }, [loaded, loading, pagination])
 
   return useMemo(
     () => ({

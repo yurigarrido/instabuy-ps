@@ -1,26 +1,32 @@
 import { Text } from '@/shared/components/text'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import * as S from './styles'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { searchProducts } from '../home/services/searchProducts'
 import { Product as ProductType } from '../home/models/product'
 import { Product } from '../home/components'
-import { CaretRight } from 'phosphor-react'
 import Breadcrumbs from '@/shared/components/breadcrumbs'
+import { useLayoutContext } from '@/layout/context'
 
 export const Search = () => {
   const { query } = useParams()
   const [products, setProducts] = useState<ProductType[]>([])
+  const { loading, loaded } = useLayoutContext()
 
-  const getProducts = async (query: string | undefined) => {
-    if (!query) return
-    const products = await searchProducts(query)
-    setProducts(products)
-  }
+  const getProducts = useCallback(
+    async (query: string | undefined) => {
+      if (!query) return
+      loading()
+      const products = await searchProducts(query)
+      setProducts(products)
+      loaded()
+    },
+    [loaded, loading],
+  )
 
   useEffect(() => {
     getProducts(query)
-  }, [query])
+  }, [getProducts, query])
 
   return (
     <S.Container>

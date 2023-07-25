@@ -34,7 +34,11 @@ export const Product = ({
       key={product.id}
       onClick={() => navigate(`/product/${product.slug}`)}
     >
-      <img src={generateImageUrl(product.imageUrl)} alt={product.slug} />
+      <img
+        src={generateImageUrl(product.imageUrl)}
+        alt={product.slug}
+        loading="lazy"
+      />
       <S.PriceContainer>
         <S.Price>
           <Text size="4xl" bold>

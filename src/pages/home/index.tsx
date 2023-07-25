@@ -1,15 +1,12 @@
 import { Text } from '@/shared/components/text'
 import * as S from './styles'
-import { generateBannerUrl, generateImageUrl } from '@/shared/constants'
-import { formatCurrency } from '@/shared/utils/formatter'
-import { useNavigate } from 'react-router'
+import { generateBannerUrl } from '@/shared/constants'
 import { Carrousel } from '@/shared/components/carrousel'
 import { MagnifyingGlass } from 'phosphor-react'
 import { Pagination, Product } from './components'
 import { useProductsContext } from './context/products/products'
 import { Banners } from '@/shared/components/banners'
 export const Home = () => {
-  const navigate = useNavigate()
   const { isLoading, products, banners } = useProductsContext()
 
   if (isLoading) return 'Carregando..'
@@ -20,6 +17,7 @@ export const Home = () => {
         {banners.map((banner, index) => {
           return (
             <S.BannerImg
+              loading="lazy"
               className={`keen-slider__slide number-slide${index}`}
               key={banner.id}
               src={generateBannerUrl(banner.imageUrl)}
