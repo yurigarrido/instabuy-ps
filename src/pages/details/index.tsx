@@ -39,7 +39,7 @@ export const Details = () => {
           ))}
         </Carrousel>
         <div>
-          <Text size="7xl" bold>
+          <Text size="5xl" bold>
             {product.name}
           </Text>
           <S.FlexContainer>
