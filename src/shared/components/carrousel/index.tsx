@@ -2,21 +2,21 @@ import 'keen-slider/keen-slider.min.css'
 import { useKeenSlider } from 'keen-slider/react'
 import { ReactNode, useState } from 'react'
 import * as S from './styles'
-import { Button } from '../button'
-import {
-  ArrowArcLeft,
-  ArrowArcRight,
-  CaretLeft,
-  CaretRight,
-  Lightning,
-} from 'phosphor-react'
-import { Text } from '../text'
+import { CaretLeft, CaretRight, Lightning } from 'phosphor-react'
 
 interface CarrouselItems {
   children: ReactNode
+  showPoints?: boolean
+  showControls?: boolean
+  itemsPerView?: number
 }
 
-export const Carrousel = ({ children }: CarrouselItems) => {
+export const Carrousel = ({
+  children,
+  showPoints,
+  showControls,
+  itemsPerView,
+}: CarrouselItems) => {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [loaded, setLoaded] = useState(false)
   const [sliderRef, instanceRef] = useKeenSlider({
@@ -28,7 +28,7 @@ export const Carrousel = ({ children }: CarrouselItems) => {
       setLoaded(true)
     },
     slides: {
-      perView: 4.6,
+      perView: itemsPerView || 1,
       spacing: 48,
     },
   })
@@ -37,14 +37,8 @@ export const Carrousel = ({ children }: CarrouselItems) => {
 
   return (
     <S.Container className="navigation-wrapper">
-      <S.Heading>
-        <Lightning size={36} />
-        <Text size="5xl" bold>
-          Ofertas
-        </Text>
-      </S.Heading>
       <div ref={sliderRef} className="keen-slider">
-        {loaded && instanceRef.current && (
+        {showControls && loaded && instanceRef.current && (
           <S.CarrouselButtonLeft
             color="orange"
             circle
@@ -55,36 +49,36 @@ export const Carrousel = ({ children }: CarrouselItems) => {
           </S.CarrouselButtonLeft>
         )}
         {children}
-        {loaded && instanceRef.current && (
+        {showControls && loaded && instanceRef.current && (
           <S.CarrouselButtonRight
             color="orange"
             circle
             onClick={(e) => e.stopPropagation() || instanceRef.current?.next()}
             disabled={
               currentSlide ===
-              instanceRef.current.track.details.slides.length - 1
+              instanceRef.current.track.details?.slides?.length - 1
             }
           >
             <CaretRight size={24} />
           </S.CarrouselButtonRight>
         )}
       </div>
-      {false && loaded && instanceRef.current && (
-        <div className="dots">
+      {showPoints && loaded && instanceRef.current && (
+        <S.Points>
           {[
-            ...Array(instanceRef.current.track.details.slides.length).keys(),
+            ...Array(instanceRef.current.track?.details?.slides.length).keys(),
           ].map((idx) => {
             return (
-              <Button
+              <S.Point
                 key={idx}
                 onClick={() => {
                   instanceRef.current?.moveToIdx(idx)
                 }}
-                className={'dot' + (currentSlide === idx ? ' active' : '')}
-              ></Button>
+                active={currentSlide === idx}
+              />
             )
           })}
-        </div>
+        </S.Points>
       )}
     </S.Container>
   )

@@ -3,10 +3,10 @@ import { Button } from '../button'
 
 export const Container = styled('div', {
   backgroundColor: '$white',
-  maxWidth: '118rem',
   margin: '0 auto',
   borderRadius: '$md',
 
+  width: '100%',
   padding: '$4 0',
 
   display: 'flex',
@@ -56,5 +56,34 @@ export const Heading = styled('div', {
 
   svg: {
     color: '$orange',
+  },
+})
+
+export const Points = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
+  width: '100%',
+})
+
+export const Point = styled('button', {
+  border: 'none',
+  width: '10px',
+  height: '10px',
+  background: '#c5c5c5',
+  borderRadius: '50%',
+  margin: ' 0 5px',
+  padding: ' 5px',
+  cursor: 'pointer',
+
+  '&:focus': {
+    outline: 'none',
+  },
+
+  variants: {
+    active: {
+      true: {
+        background: '#000',
+      },
+    },
   },
 })

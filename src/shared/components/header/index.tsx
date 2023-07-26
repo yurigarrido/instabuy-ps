@@ -3,7 +3,7 @@ import * as S from './styles'
 import { Button } from '../button'
 import { Text } from '../text'
 import { useNavigate } from 'react-router'
-import { useShoppingCartContext } from '@/pages/home/context/cart/cart'
+import { useShoppingCartContext } from '@/shared/context/cart/cart'
 import { useState } from 'react'
 
 export const Header = () => {
@@ -15,12 +15,18 @@ export const Header = () => {
     e.preventDefault()
     if (!search) navigate(`/`)
     navigate(`/search/${search}`)
+    window.scrollTo(0, 0)
   }
 
   return (
     <S.Container>
       <S.Wrapper>
-        <S.FlexContainer onClick={() => navigate('/')}>
+        <S.FlexContainer
+          onClick={() => {
+            setSearch('')
+            navigate('/')
+          }}
+        >
           <div>
             <S.Logo
               src="https://ibassets.com.br/ib.store.image.medium/m-0cd410fa3a4844acb4294a0edfea3822.png"

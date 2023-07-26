@@ -118,6 +118,14 @@ export const Container = styled('button', {
         $$background: '$colors$danger1',
         $$color: 'white',
       },
+      gray: {
+        $$background: '$colors$gray2',
+        $$color: 'black',
+
+        '&:hover': {
+          $$background: '$colors$gray2',
+        },
+      },
       orange: {
         $$background: '$colors$orange',
         $$color: 'white',

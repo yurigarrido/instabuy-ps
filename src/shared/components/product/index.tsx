@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { formatCurrency } from '@/shared/utils/formatter'
 import { Text } from '@/shared/components/text'
 import { Plus } from 'phosphor-react'
-import { useShoppingCartContext } from '../../../pages/home/context/cart/cart'
+import { useShoppingCartContext } from '../../context/cart/cart'
 import { toast } from 'react-hot-toast'
 import { useState } from 'react'
 
@@ -43,7 +43,7 @@ export const Product = ({
       <div>
         <S.Image
           loading={!imageLoaded}
-          src={generateImageUrl(product.imageUrl)}
+          src={generateImageUrl(product.imageUrl, 'medium')}
           onLoad={handleImageLoad}
           alt=""
         />

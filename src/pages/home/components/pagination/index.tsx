@@ -14,6 +14,7 @@ export const Pagination = () => {
         leftIcon={<Plus size={24} />}
         onClick={getMoreProducts}
         loading={loadingMoreProducts}
+        disabled={loadingMoreProducts}
       >
         Carregar mais
       </Button>
