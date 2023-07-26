@@ -3,7 +3,7 @@ import * as S from './styles'
 import { Button } from '../button'
 import { Text } from '../text'
 import { useNavigate } from 'react-router'
-import { useShoppingCartContext } from '@/pages/home/context/cart/cart'
+import { useShoppingCartContext } from '@/shared/context/cart/cart'
 import { useState } from 'react'
 
 export const Header = () => {

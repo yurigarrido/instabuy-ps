@@ -4,9 +4,9 @@ import * as S from './styles'
 import { useEffect, useState, useCallback } from 'react'
 import { searchProducts } from '../home/services/searchProducts'
 import { Product as ProductType } from '../home/models/product'
-import { Product } from '../home/components'
 import Breadcrumbs from '@/shared/components/breadcrumbs'
 import { useLayoutContext } from '@/layout/context'
+import { Product } from '@/shared/components/product'
 
 export const Search = () => {
   const { query } = useParams()

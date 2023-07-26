@@ -11,11 +11,15 @@ import { Button } from '@/shared/components/button'
 import { Plus, TrashSimple } from 'phosphor-react'
 import { Carrousel } from '@/shared/components/carrousel'
 import { ProductDetails } from './models/product'
+import { useShoppingCartContext } from '@/shared/context'
+import { toast } from 'react-hot-toast'
 
 export const Details = () => {
   const { slug } = useParams()
 
   const [product, setProduct] = useState<ProductDetails>()
+  const { addProduct, removeProduct, getProductOnCart, deleteItemOnCart } =
+    useShoppingCartContext()
 
   const { isLoading } = useQuery('slug', () => getProductDetails(slug), {
     onSuccess(data) {
@@ -24,6 +28,8 @@ export const Details = () => {
   })
 
   if (isLoading || !product) return 'Carregando..'
+
+  const cartInformations = getProductOnCart(product?.id)
 
   return (
     <S.Container>
@@ -48,17 +54,47 @@ export const Details = () => {
           </S.FlexContainer>
           <S.CartControl>
             <S.FlexContainer>
-              <Button color="gray" size="lg">
+              <Button
+                color="gray"
+                size="lg"
+                onClick={() => removeProduct(product)}
+              >
                 <TrashSimple size={16} />
               </Button>
-              <div>1</div>
-              <Button color="gray" size="lg">
+              <div>{cartInformations?.quantity || 0}</div>
+              <Button
+                color="gray"
+                size="lg"
+                onClick={() => addProduct(product)}
+              >
                 <Plus size={16} />
               </Button>
             </S.FlexContainer>
-            <Button full size="lg">
-              Adicionar
-            </Button>
+
+            {cartInformations ? (
+              <Button
+                full
+                color="red"
+                size="lg"
+                onClick={() => {
+                  deleteItemOnCart(product.id)
+                  toast.success('Produto removido')
+                }}
+              >
+                Remover
+              </Button>
+            ) : (
+              <Button
+                full
+                size="lg"
+                onClick={() => {
+                  addProduct(product)
+                  toast.success('Produto adicionado!')
+                }}
+              >
+                Adicionar
+              </Button>
+            )}
           </S.CartControl>
         </div>
       </S.Grid>
