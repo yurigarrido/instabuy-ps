@@ -10,8 +10,6 @@ function useProducts() {
   const [loadingMoreProducts, setloadingMoreProducts] = useState(false)
   const [pagination, setPagination] = useState<number>(2)
 
-  const { loaded, loading } = useLayoutContext()
-
   const defaultPage = 1
   const { isLoading } = useQuery('products', () => getProducts(defaultPage), {
     onSuccess(data) {
@@ -21,13 +19,11 @@ function useProducts() {
 
   const getMoreProducts = useCallback(async () => {
     setloadingMoreProducts(true)
-    loading()
     const products = await getProducts(pagination)
     setPagination((prevPagination) => prevPagination + 1)
     setloadingMoreProducts(false)
-    loaded()
     setProducts((previousProducts) => [...previousProducts, ...products])
-  }, [loaded, loading, pagination])
+  }, [pagination])
 
   return useMemo(
     () => ({
