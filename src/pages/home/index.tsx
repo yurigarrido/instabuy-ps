@@ -13,7 +13,7 @@ import { Banner } from './models/banner'
 import { Product } from '@/shared/components/product'
 
 export const Home = () => {
-  const { isLoading, products } = useProductsContext()
+  const { isLoading, products, totalProducts } = useProductsContext()
   const [banners, setBanners] = useState<Banner[]>([])
 
   useQuery('banners', () => getBanners(), {
@@ -79,7 +79,7 @@ export const Home = () => {
           })}
         </S.FlexContainer>
 
-        <Pagination />
+        {totalProducts > products.length && <Pagination />}
       </S.ProductsView>
     </S.Container>
   )

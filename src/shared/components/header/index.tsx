@@ -15,12 +15,18 @@ export const Header = () => {
     e.preventDefault()
     if (!search) navigate(`/`)
     navigate(`/search/${search}`)
+    window.scrollTo(0, 0)
   }
 
   return (
     <S.Container>
       <S.Wrapper>
-        <S.FlexContainer onClick={() => navigate('/')}>
+        <S.FlexContainer
+          onClick={() => {
+            setSearch('')
+            navigate('/')
+          }}
+        >
           <div>
             <S.Logo
               src="https://ibassets.com.br/ib.store.image.medium/m-0cd410fa3a4844acb4294a0edfea3822.png"

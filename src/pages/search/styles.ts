@@ -39,3 +39,9 @@ export const FlexContainer = styled('div', {
   flexDirection: 'row',
   gap: '$6',
 })
+
+export const ButtonContainer = styled('div', {
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+})
