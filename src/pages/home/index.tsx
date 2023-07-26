@@ -26,19 +26,21 @@ export const Home = () => {
 
   return (
     <S.Container>
-      <Banners>
-        {banners.map((banner, index) => {
-          return (
-            <S.BannerImg
-              loading="lazy"
-              className={`keen-slider__slide number-slide${index}`}
-              key={banner.id}
-              src={generateBannerUrl(banner.imageUrl)}
-              alt=""
-            />
-          )
-        })}
-      </Banners>
+      {!!banners.length && (
+        <Banners>
+          {banners.map((banner, index) => {
+            return (
+              <S.BannerImg
+                loading="lazy"
+                className={`keen-slider__slide number-slide${index}`}
+                key={banner.id}
+                src={generateBannerUrl(banner.imageUrl)}
+                alt=""
+              />
+            )
+          })}
+        </Banners>
+      )}
       <S.FlexContainer>
         <S.CarrouselContainer>
           <S.Heading>
