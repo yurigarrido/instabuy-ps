@@ -1,4 +1,4 @@
-import { styled } from '../../../../../../stitches.config'
+import { keyframes, styled } from '../../../../../../stitches.config'
 
 export const ProductContainer = styled('div', {
   display: 'flex',
@@ -8,11 +8,6 @@ export const ProductContainer = styled('div', {
   background: '$white',
 
   padding: '$8 $10 $8 $8',
-
-  img: {
-    width: '64px',
-    objectFit: 'contain',
-  },
 
   '> div': {
     display: 'flex',
@@ -89,4 +84,10 @@ export const RemoveProductButton = styled('button', {
     background: '$danger1',
     color: '$white',
   },
+})
+
+export const Image = styled('img', {
+  width: '64px',
+  objectFit: 'contain',
+  height: '121px',
 })

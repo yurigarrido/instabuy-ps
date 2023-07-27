@@ -60,7 +60,7 @@ export const Home = () => {
               Ofertas
             </Text>
           </S.Heading>
-          <Carrousel itemsPerView={itensPerPage[device]} showControls>
+          <Carrousel loop itemsPerView={itensPerPage[device]} showControls>
             {products.slice(1, 15).map((product, index) => {
               return (
                 <Product

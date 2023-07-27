@@ -23,6 +23,7 @@ export const Product = ({ product }: ProductProps) => {
       setChangeQuantity(false)
     }
   })
+
   return (
     <S.ProductContainer key={product.id}>
       <S.RemoveProductButton
@@ -31,7 +32,7 @@ export const Product = ({ product }: ProductProps) => {
       >
         <X size={16} />
       </S.RemoveProductButton>
-      <img src={generateImageUrl(product.imageUrl, 'small')} alt="" />
+      <S.Image src={generateImageUrl(product.imageUrl, 'small')} alt="" />
       <div>
         <Text size="2xl" bold>
           {product.name}
