@@ -27,4 +27,8 @@ export const Content = styled('div', {
   height: '100%',
 
   marginTop: '$sizes$header',
+
+  '@mobile': {
+    marginTop: '17rem',
+  },
 })

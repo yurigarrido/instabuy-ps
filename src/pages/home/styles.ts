@@ -1,7 +1,7 @@
 import { styled } from '../../../stitches.config'
 
 export const Container = styled('div', {
-  maxWidth: '118rem',
+  maxWidth: 'calc(100vw - 4rem)',
   width: '100%',
   overflow: 'hidden',
 
@@ -10,7 +10,12 @@ export const Container = styled('div', {
   flexWrap: 'wrap',
   gap: '$10',
 
-  margin: '$10 auto',
+  margin: '2rem',
+
+  '@bigdesktop': {
+    margin: '$8 auto',
+    maxWidth: '150rem',
+  },
 })
 
 export const Heading = styled('div', {

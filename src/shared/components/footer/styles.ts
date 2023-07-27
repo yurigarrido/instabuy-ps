@@ -7,6 +7,10 @@ export const Container = styled('footer', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+
+  '@mobile': {
+    marginBottom: '5rem',
+  },
 })
 
 export const Wrapper = styled('div', {

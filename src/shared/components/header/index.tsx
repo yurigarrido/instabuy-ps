@@ -25,9 +25,9 @@ export const Header = () => {
   }
 
   return (
-    <S.Container>
-      <S.Wrapper>
-        <S.FlexContainer
+    <S.Wrapper>
+      <S.Header>
+        <S.LogoContainer
           onClick={() => {
             setSearch('')
             navigate('/')
@@ -42,27 +42,26 @@ export const Header = () => {
           <Text size="5xl" bold>
             Instabuy
           </Text>
-        </S.FlexContainer>
+        </S.LogoContainer>
 
-        <S.SearchBar>
-          <form onSubmit={onSubmit}>
-            <input
-              type="text"
-              placeholder="O que você procura?"
-              value={search}
-              onChange={({ target }) => setSearch(target.value)}
-            />
-            <button title="pesquisar" type="submit">
-              <MagnifyingGlass size={16} />
-            </button>
-          </form>
+        <S.SearchBar onSubmit={onSubmit}>
+          <input
+            type="text"
+            placeholder="O que você procura?"
+            value={search}
+            onChange={({ target }) => setSearch(target.value)}
+          />
+          <button title="pesquisar" type="submit">
+            <MagnifyingGlass size={16} />
+          </button>
         </S.SearchBar>
 
-        <S.FlexContainer>
-          <Button color="white" leftIcon={<UserCircle size={20} />}>
+        <S.ButtonsContainer>
+          <Button color="white" full leftIcon={<UserCircle size={20} />}>
             Minha conta
           </Button>
           <Button
+            full
             color="primary"
             leftIcon={<ShoppingIcon size={20} />}
             onClick={openShoppingCart}
@@ -70,10 +69,10 @@ export const Header = () => {
             Carrinho
             {!!count && <S.CartCount>{count}</S.CartCount>}
           </Button>
-        </S.FlexContainer>
-      </S.Wrapper>
+        </S.ButtonsContainer>
 
-      <ShoppingCart open={cartOpen} close={closeShoppingCart} />
-    </S.Container>
+        <ShoppingCart open={cartOpen} close={closeShoppingCart} />
+      </S.Header>
+    </S.Wrapper>
   )
 }

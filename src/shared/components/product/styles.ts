@@ -57,6 +57,13 @@ export const Product = styled('div', {
       display: 'flex',
     },
   },
+
+  '@mobile': {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
 })
 
 const shimmerAnimation = keyframes({
