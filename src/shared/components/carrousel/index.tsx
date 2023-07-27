@@ -2,7 +2,7 @@ import 'keen-slider/keen-slider.min.css'
 import { useKeenSlider } from 'keen-slider/react'
 import { ReactNode, useState } from 'react'
 import * as S from './styles'
-import { CaretLeft, CaretRight, Lightning } from 'phosphor-react'
+import { CaretLeft, CaretRight } from 'phosphor-react'
 
 interface CarrouselItems {
   children: ReactNode
@@ -42,7 +42,7 @@ export const Carrousel = ({
           <S.CarrouselButtonLeft
             color="orange"
             circle
-            onClick={(e) => e.stopPropagation() || instanceRef.current?.prev()}
+            onClick={() => instanceRef.current?.prev()}
             disabled={currentSlide === 0}
           >
             <CaretLeft size={24} />
@@ -53,7 +53,7 @@ export const Carrousel = ({
           <S.CarrouselButtonRight
             color="orange"
             circle
-            onClick={(e) => e.stopPropagation() || instanceRef.current?.next()}
+            onClick={() => instanceRef.current?.next()}
             disabled={
               currentSlide ===
               instanceRef.current.track.details?.slides?.length - 1

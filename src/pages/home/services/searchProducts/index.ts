@@ -1,6 +1,7 @@
 import { api } from '@/shared/api'
 import { ProductsData } from './types'
 import { Product } from '../../models/product'
+import { endpoints } from '@/shared/api/endpoints'
 
 export interface ProductsResponse {
   products: Product[]
@@ -11,7 +12,7 @@ export const searchProducts = async (
   query: string,
   page: number,
 ): Promise<ProductsResponse> => {
-  const { data } = await api.get<ProductsData>('/search', {
+  const { data } = await api.get<ProductsData>(endpoints.search, {
     params: {
       subdomain: 'supermercado',
       N: 30,
