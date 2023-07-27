@@ -2,7 +2,7 @@ import constate from 'constate'
 import { useMemo, useState, useCallback } from 'react'
 
 function useLayout() {
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const loading = useCallback(() => {
     setIsLoading(true)

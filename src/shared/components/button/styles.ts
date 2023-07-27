@@ -100,6 +100,13 @@ export const Container = styled('button', {
       center: {
         justifyContent: 'center',
       },
+      space: {
+        span: {
+          display: 'flex',
+          width: '100%',
+          justifyContent: 'space-between',
+        },
+      },
     },
     color: {
       primary: {

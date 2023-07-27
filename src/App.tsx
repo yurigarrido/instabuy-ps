@@ -20,7 +20,10 @@ export const App = () => {
               <Toaster
                 position="bottom-right"
                 reverseOrder={true}
-                toastOptions={{ duration: 3000 }}
+                toastOptions={{
+                  duration: 3000,
+                  style: { zIndex: '999' },
+                }}
               />
               <Loading />
               <Router />

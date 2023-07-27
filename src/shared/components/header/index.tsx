@@ -1,14 +1,20 @@
-import { MagnifyingGlass, ShoppingCart, UserCircle } from 'phosphor-react'
+import {
+  MagnifyingGlass,
+  ShoppingCart as ShoppingIcon,
+  UserCircle,
+} from 'phosphor-react'
 import * as S from './styles'
 import { Button } from '../button'
 import { Text } from '../text'
 import { useNavigate } from 'react-router'
 import { useShoppingCartContext } from '@/shared/context/cart/cart'
 import { useState } from 'react'
+import { ShoppingCart } from './components'
 
 export const Header = () => {
   const navigate = useNavigate()
-  const { count } = useShoppingCartContext()
+  const { count, cartOpen, openShoppingCart, closeShoppingCart } =
+    useShoppingCartContext()
   const [search, setSearch] = useState('')
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -56,12 +62,18 @@ export const Header = () => {
           <Button color="white" leftIcon={<UserCircle size={20} />}>
             Minha conta
           </Button>
-          <Button color="primary" leftIcon={<ShoppingCart size={20} />}>
+          <Button
+            color="primary"
+            leftIcon={<ShoppingIcon size={20} />}
+            onClick={openShoppingCart}
+          >
             Carrinho
-            <>{!!count && <S.CartCount>{count}</S.CartCount>}</>
+            {!!count && <S.CartCount>{count}</S.CartCount>}
           </Button>
         </S.FlexContainer>
       </S.Wrapper>
+
+      <ShoppingCart open={cartOpen} close={closeShoppingCart} />
     </S.Container>
   )
 }
