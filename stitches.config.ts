@@ -128,6 +128,7 @@ export const {
     mobile: '(max-width: 640px)',
     tablet: '(min-width: 768px)',
     desktop: '(min-width: 1024px)',
+    bigdesktop: '(min-width: 1550px)',
   },
 })
 

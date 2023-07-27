@@ -1,11 +1,12 @@
 import { api } from '@/shared/api'
-// import { ProductsData } from './types'
 import { Banner } from '../../models/banner'
+import { BannersData } from './types'
+import { endpoints } from '@/shared/api/endpoints'
 
 export const getBanners = async (): Promise<Banner[]> => {
   const {
     data: { data },
-  } = await api.get('/layout', {
+  } = await api.get<BannersData>(endpoints.banners, {
     params: { subdomain: 'supermercado' },
   })
 

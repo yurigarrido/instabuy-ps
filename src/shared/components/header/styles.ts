@@ -1,46 +1,49 @@
 import { styled } from '../../../../stitches.config'
 
-export const Container = styled('header', {
-  width: '100%',
-  backgroundColor: '$white',
-
-  height: '$header',
-
+export const Wrapper = styled('div', {
   position: 'fixed',
+  zIndex: '$header',
   top: '0',
 
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  backgroundColor: '$white',
+  borderBottom: '1px solid $gray2',
 
-  zIndex: '$header',
-})
-
-export const Wrapper = styled('div', {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-
-  maxWidth: '118rem',
   width: '100%',
 })
 
-export const Logo = styled('img', {
-  height: '64px',
-  width: '64px',
+export const Header = styled('header', {
+  width: '100%',
 
-  objectFit: 'cover',
+  padding: '$8',
+
+  display: 'flex',
+  alignItems: 'center',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  flexWrap: 'wrap',
+  gap: '$8',
+
+  '@bigdesktop': {
+    margin: '0 auto',
+    maxWidth: '150rem',
+  },
+
+  '@mobile': {
+    width: '100vw',
+    flexDirection: 'column',
+  },
 })
 
-export const SearchBar = styled('div', {
-  display: 'flex',
-  justifyContent: 'center',
+export const SearchBar = styled('form', {
+  flex: 1,
 
   position: 'relative',
 
   input: {
     height: '$16',
-    width: '40rem',
+    flex: '1',
+    width: '100%',
+    minWidth: '200px',
 
     padding: '$4',
   },
@@ -58,12 +61,52 @@ export const SearchBar = styled('div', {
       color: '$orange',
     },
   },
+
+  '@mobile': {
+    input: {
+      width: 'calc(100vw - 4rem)',
+    },
+  },
 })
 
-export const FlexContainer = styled('div', {
+const FlexContainer = styled('div', {
   display: 'flex',
   alignItems: 'center',
   gap: '$4',
+
+  '@mobile': {
+    flex: 1,
+    width: '100%',
+  },
+
+  '@tablet': {
+    flex: 1,
+    width: '100%',
+  },
+})
+
+export const ButtonsContainer = styled(FlexContainer, {
+  justifyContent: 'space-between',
+
+  '@mobile': {
+    position: 'fixed',
+    bottom: '0',
+
+    padding: '$8',
+    backgroundColor: '$white',
+
+    borderTop: '1px solid $gray2',
+  },
+})
+export const LogoContainer = styled(FlexContainer, {
+  justifyContent: 'center',
+})
+
+export const Logo = styled('img', {
+  height: '64px',
+  width: '64px',
+
+  objectFit: 'cover',
 })
 
 export const CartCount = styled('div', {

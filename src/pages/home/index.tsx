@@ -11,9 +11,12 @@ import { getBanners } from './services/getBanners'
 import { useState } from 'react'
 import { Banner } from './models/banner'
 import { Product } from '@/shared/components/product'
+import { useWindowSize } from '@/shared/hooks/useWindowSize'
 
 export const Home = () => {
   const { isLoading, products, totalProducts } = useProductsContext()
+  const device = useWindowSize()
+  const isDesktop = device !== 'mobile'
   const [banners, setBanners] = useState<Banner[]>([])
 
   useQuery('banners', () => getBanners(), {
@@ -24,9 +27,16 @@ export const Home = () => {
 
   if (isLoading) return 'Carregando..'
 
+  const itensPerPage = {
+    desktop: 4.6,
+    tablet: 2.6,
+    bigdesktop: 5.6,
+    mobile: 1,
+  }
+
   return (
     <S.Container>
-      {!!banners.length && (
+      {!!banners.length && isDesktop && (
         <Banners>
           {banners.map((banner, index) => {
             return (
@@ -49,7 +59,7 @@ export const Home = () => {
               Ofertas
             </Text>
           </S.Heading>
-          <Carrousel itemsPerView={4.6} showControls>
+          <Carrousel itemsPerView={itensPerPage[device]} showControls>
             {products.slice(1, 15).map((product, index) => {
               return (
                 <Product

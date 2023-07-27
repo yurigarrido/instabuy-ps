@@ -17,6 +17,8 @@ export const Container = styled('div', {
 export const Content = styled('div', {
   padding: '$10',
   display: 'flex',
+  flexDirection: 'column',
+  gap: '$6',
   width: '100%',
 
   background: '$white',
@@ -52,6 +54,10 @@ export const ImageContainer = styled('div', {
   img: {
     height: '572px',
     objectFit: 'contain',
+
+    '@mobile': {
+      height: '200px',
+    },
   },
 })
 
