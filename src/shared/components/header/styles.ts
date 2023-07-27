@@ -99,7 +99,9 @@ export const ButtonsContainer = styled(FlexContainer, {
   },
 })
 export const LogoContainer = styled(FlexContainer, {
-  justifyContent: 'center',
+  '@mobile': {
+    justifyContent: 'center',
+  },
 })
 
 export const Logo = styled('img', {

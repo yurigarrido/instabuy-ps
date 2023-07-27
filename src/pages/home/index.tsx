@@ -16,7 +16,7 @@ import { useWindowSize } from '@/shared/hooks/useWindowSize'
 export const Home = () => {
   const { isLoading, products, totalProducts } = useProductsContext()
   const device = useWindowSize()
-  const isDesktop = device !== 'mobile'
+  const isDesktop = device === 'desktop' || device === 'bigdesktop'
   const [banners, setBanners] = useState<Banner[]>([])
 
   useQuery('banners', () => getBanners(), {

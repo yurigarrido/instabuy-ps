@@ -62,7 +62,6 @@ export const FlexContainer = styled('div', {
 })
 
 export const BannerImg = styled('img', {
-  height: '295px',
   objectFit: 'contain',
   borderRadius: '$md',
 })
