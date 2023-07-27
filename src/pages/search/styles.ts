@@ -1,8 +1,7 @@
 import { styled } from '../../../stitches.config'
 
 export const Container = styled('div', {
-  maxWidth: '118rem',
-  width: '100%',
+  width: 'calc(100vw - 4rem)',
   overflow: 'hidden',
 
   display: 'flex',
@@ -10,6 +9,10 @@ export const Container = styled('div', {
   gap: '$10',
 
   margin: '$10 auto',
+
+  '@bigdesktop': {
+    maxWidth: '150rem',
+  },
 })
 
 export const InformationsContainer = styled('div', {

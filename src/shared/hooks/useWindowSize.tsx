@@ -15,8 +15,6 @@ export const useWindowSize = () => {
 
   const device = getDevice()
 
-  console.log(device)
-
   useEffect(() => {
     const handleResize = () =>
       setWindowSize({

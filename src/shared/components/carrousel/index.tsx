@@ -9,6 +9,7 @@ interface CarrouselItems {
   showPoints?: boolean
   showControls?: boolean
   itemsPerView?: number
+  loop?: boolean
 }
 
 export const Carrousel = ({
@@ -16,11 +17,13 @@ export const Carrousel = ({
   showPoints,
   showControls,
   itemsPerView,
+  loop,
 }: CarrouselItems) => {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [loaded, setLoaded] = useState(false)
   const [sliderRef, instanceRef] = useKeenSlider({
     initial: 0,
+    loop,
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel)
     },
@@ -43,7 +46,7 @@ export const Carrousel = ({
             color="orange"
             circle
             onClick={() => instanceRef.current?.prev()}
-            disabled={currentSlide === 0}
+            disabled={!loop && currentSlide === 0}
           >
             <CaretLeft size={24} />
           </S.CarrouselButtonLeft>
@@ -55,8 +58,9 @@ export const Carrousel = ({
             circle
             onClick={() => instanceRef.current?.next()}
             disabled={
+              !loop &&
               currentSlide ===
-              instanceRef.current.track.details?.slides?.length - 1
+                instanceRef.current.track.details?.slides?.length - 1
             }
           >
             <CaretRight size={24} />

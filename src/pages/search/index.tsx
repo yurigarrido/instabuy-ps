@@ -9,11 +9,12 @@ import { useLayoutContext } from '@/layout/context'
 import { Product } from '@/shared/components/product'
 import { Button } from '@/shared/components/button'
 import { Plus } from 'phosphor-react'
+import { SearchSkeleton } from './components'
 
 export const Search = () => {
   const { query } = useParams()
   const [products, setProducts] = useState<ProductType[]>([])
-  const { loading, loaded } = useLayoutContext()
+  const { loading, loaded, isLoading } = useLayoutContext()
   const [loadingMoreProducts, setloadingMoreProducts] = useState(false)
   const [pagination, setPagination] = useState<number>(2)
   const [totalProducts, setTotalProducts] = useState(0)
@@ -41,6 +42,7 @@ export const Search = () => {
   }, [pagination, query])
 
   useEffect(() => {
+    setTotalProducts(0)
     getProducts(query)
   }, [getProducts, query])
 
@@ -48,34 +50,43 @@ export const Search = () => {
     <S.Container>
       <S.InformationsContainer>
         <Breadcrumbs />
-        <Text size="5xl" bold>
-          Resultados para {`"${query}"`}{' '}
-        </Text>
-        <Text size="xl"> {products.length} resultados encontrados</Text>
+
+        {!!totalProducts && (
+          <>
+            <Text size="5xl" bold>
+              Resultados para {`"${query}"`}{' '}
+            </Text>
+            <Text size="xl"> {products.length} resultados encontrados</Text>
+          </>
+        )}
       </S.InformationsContainer>
 
-      <S.ProductsView>
-        <S.FlexContainer>
-          {products.map((product) => {
-            return <Product product={product} key={product.id} />
-          })}
-        </S.FlexContainer>
-        {totalProducts > products.length && (
-          <S.ButtonContainer>
-            <Button
-              size="lg"
-              color="orange"
-              weight="bold"
-              leftIcon={<Plus size={24} />}
-              onClick={getMoreProducts}
-              loading={loadingMoreProducts}
-              disabled={loadingMoreProducts}
-            >
-              Carregar mais
-            </Button>
-          </S.ButtonContainer>
-        )}
-      </S.ProductsView>
+      {isLoading ? (
+        <SearchSkeleton />
+      ) : (
+        <S.ProductsView>
+          <S.FlexContainer>
+            {products.map((product) => {
+              return <Product product={product} key={product.id} />
+            })}
+          </S.FlexContainer>
+          {totalProducts > products.length && (
+            <S.ButtonContainer>
+              <Button
+                size="lg"
+                color="orange"
+                weight="bold"
+                leftIcon={<Plus size={24} />}
+                onClick={getMoreProducts}
+                loading={loadingMoreProducts}
+                disabled={loadingMoreProducts}
+              >
+                Carregar mais
+              </Button>
+            </S.ButtonContainer>
+          )}
+        </S.ProductsView>
+      )}
     </S.Container>
   )
 }

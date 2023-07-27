@@ -1,4 +1,5 @@
 import { useKeenSlider } from 'keen-slider/react'
+import * as S from './styles'
 
 interface BannersProps {
   children: React.ReactNode
@@ -42,8 +43,8 @@ export const Banners = ({ children }: BannersProps) => {
   )
 
   return (
-    <div ref={sliderRef} className="keen-slider">
+    <S.BannerContainer ref={sliderRef} className="keen-slider">
       {children}
-    </div>
+    </S.BannerContainer>
   )
 }
