@@ -98,8 +98,16 @@ export const Details = () => {
           </S.CartControl>
         </div>
       </S.Grid>
-      <S.Content>{product.description}</S.Content>
       <S.Content>
+        <Text bold size="4xl">
+          Descrição
+        </Text>
+        {product.description}
+      </S.Content>
+      <S.Content>
+        <Text bold size="4xl">
+          Observações
+        </Text>
         Informações sobre o produto ou embalagem apresentada pode não ser atual
         ou completo. Sempre consulte o produto físico para as informações mais
         precisas e avisos. Para obter informações adicionais, entre em contato
