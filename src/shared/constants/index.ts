@@ -6,7 +6,7 @@ type Size = 'medium' | 'big' | 'small'
 
 export const generateImageUrl = (url: string, size: Size): string => {
   const urlsSizes = {
-    small: 'https://assets.instabuy.com.br/ib.item.image.samll/s-',
+    small: 'https://assets.instabuy.com.br/ib.item.image.small/s-',
     medium: 'https://assets.instabuy.com.br/ib.item.image.medium/m-',
     big: 'https://assets.instabuy.com.br/ib.item.image.big/b-',
   }

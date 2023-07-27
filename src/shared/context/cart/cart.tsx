@@ -1,14 +1,36 @@
+import { useLocalStorage } from '@/shared/hooks/useLocalStorage'
+import { CartProduct } from '@/shared/models/cartProduct'
 import constate from 'constate'
-import { useMemo, useState, useCallback } from 'react'
-import { Product } from '../../../pages/home/models/product'
-
-interface CartProduct extends Product {
-  quantity: number
-  id: string
-}
+import { useMemo, useState, useCallback, useEffect } from 'react'
 
 function useShoppingCart() {
   const [cartProducts, setCartProducts] = useState<CartProduct[]>([])
+  const [cartOpen, setCartOpen] = useState(false)
+  const [persistedProducts, setPersistedProducts] = useLocalStorage<
+    CartProduct[]
+  >('shoopingCartInstabuy', [])
+
+  useEffect(() => {
+    if (persistedProducts.length) {
+      setCartProducts(persistedProducts)
+    }
+  }, [persistedProducts])
+
+  useEffect(() => {
+    setPersistedProducts(cartProducts)
+  }, [cartProducts, setPersistedProducts])
+
+  const openShoppingCart = useCallback(() => {
+    setCartOpen(true)
+  }, [])
+
+  const closeShoppingCart = useCallback(() => {
+    setCartOpen(false)
+  }, [])
+
+  const cleanShoopingCart = useCallback(() => {
+    setCartProducts([])
+  }, [])
 
   const addProduct = useCallback(
     (product: Omit<CartProduct, 'quantity'>) => {
@@ -43,7 +65,6 @@ function useShoppingCart() {
 
       if (addeddProduct) {
         const isLastProdcut = addeddProduct.quantity === 1
-
         if (isLastProdcut) {
           return setCartProducts((products) => {
             return products.filter(
@@ -78,7 +99,11 @@ function useShoppingCart() {
     )
   }, [])
 
-  const count = cartProducts.reduce((sum, prod) => sum + prod.quantity, 0)
+  const count = cartProducts.length
+  const finalPrice = cartProducts.reduce(
+    (sum, prod) => sum + prod.price * prod.quantity,
+    0,
+  )
 
   return useMemo(
     () => ({
@@ -87,14 +112,24 @@ function useShoppingCart() {
       deleteItemOnCart,
       cartProducts,
       count,
+      finalPrice,
       getProductOnCart,
+      cleanShoopingCart,
+      cartOpen,
+      openShoppingCart,
+      closeShoppingCart,
     }),
     [
       addProduct,
+      cartOpen,
       cartProducts,
+      cleanShoopingCart,
+      closeShoppingCart,
       count,
       deleteItemOnCart,
+      finalPrice,
       getProductOnCart,
+      openShoppingCart,
       removeProduct,
     ],
   )

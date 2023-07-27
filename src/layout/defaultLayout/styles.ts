@@ -8,6 +8,15 @@ export const LayoutCountainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
+
+  variants: {
+    hidden: {
+      true: {
+        maxHeight: '100vh',
+        overflow: 'hidden',
+      },
+    },
+  },
 })
 
 export const Content = styled('div', {
