@@ -20,10 +20,13 @@ export const Wrapper = styled('div', {
   alignItems: 'center',
   justifyContent: 'center',
 
-  maxWidth: '118rem',
-  width: '100%',
+  width: 'calc(100vw - 4rem)',
 
-  padding: '$12',
+  padding: '$12 0',
+
+  '@bigdesktop': {
+    maxWidth: '150rem',
+  },
 })
 
 export const AboutContainer = styled('div', {

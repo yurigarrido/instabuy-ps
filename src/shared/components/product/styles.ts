@@ -93,6 +93,7 @@ export const ImageSkeleton = styled('div', {
 
 export const Image = styled('img', {
   width: '160px',
+  height: '160px',
   objectFit: 'cover',
   marginBottom: '$8',
 

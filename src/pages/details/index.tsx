@@ -13,6 +13,7 @@ import { Carrousel } from '@/shared/components/carrousel'
 import { ProductDetails } from './models/product'
 import { useShoppingCartContext } from '@/shared/context'
 import { toast } from 'react-hot-toast'
+import { DetailsSkeleton } from './components'
 
 export const Details = () => {
   const { slug } = useParams()
@@ -27,7 +28,7 @@ export const Details = () => {
     },
   })
 
-  if (isLoading || !product) return 'Carregando..'
+  if (isLoading || !product) return <DetailsSkeleton />
 
   const cartInformations = getProductOnCart(product?.id)
 
