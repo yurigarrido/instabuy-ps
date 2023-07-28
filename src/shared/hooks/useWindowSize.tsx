@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 
 export const useWindowSize = () => {
-  const [device, setDevice] = useState('desktop')
+  const [device, setDevice] = useState<
+    'desktop' | 'bigdesktop' | 'mobile' | 'tablet'
+  >('desktop')
 
   useEffect(() => {
     const getDevice = () => {
