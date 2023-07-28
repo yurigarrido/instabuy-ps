@@ -13,9 +13,16 @@ import { Banner } from './models/banner'
 import { Product } from '@/shared/components/product'
 import { useWindowSize } from '@/shared/hooks/useWindowSize'
 import { HomeSkeleton } from './components/skeleton'
+import emptyList from '@/shared/assets/undraw_empty.svg'
 
 export const Home = () => {
-  const { isLoading, products, totalProducts } = useProductsContext()
+  const {
+    isLoading,
+    products,
+    totalProducts,
+    promoProducts,
+    isLoadingPromoProducts,
+  } = useProductsContext()
   const device = useWindowSize()
   const isDesktop = device === 'desktop' || device === 'bigdesktop'
   const [banners, setBanners] = useState<Banner[]>([])
@@ -26,7 +33,8 @@ export const Home = () => {
     },
   })
 
-  if (isLoading || loadingBanner) return <HomeSkeleton />
+  if (isLoading || loadingBanner || isLoadingPromoProducts)
+    return <HomeSkeleton />
 
   const itensPerPage = {
     desktop: 4.6,
@@ -52,28 +60,32 @@ export const Home = () => {
           })}
         </Banners>
       )}
-      <S.FlexContainer>
-        <S.CarrouselContainer>
-          <S.Heading>
-            <Lightning size={36} />
-            <Text size="5xl" bold>
-              Ofertas
-            </Text>
-          </S.Heading>
-          <Carrousel loop itemsPerView={itensPerPage[device]} showControls>
-            {products.slice(1, 15).map((product, index) => {
-              return (
-                <Product
-                  product={product}
-                  key={product.id}
-                  position={index}
-                  slider
-                />
-              )
-            })}
-          </Carrousel>
-        </S.CarrouselContainer>
-      </S.FlexContainer>
+
+      {promoProducts.length && (
+        <S.FlexContainer>
+          <S.CarrouselContainer>
+            <S.Heading>
+              <Lightning size={36} />
+              <Text size="5xl" bold>
+                Ofertas
+              </Text>
+            </S.Heading>
+
+            <Carrousel loop itemsPerView={itensPerPage[device]} showControls>
+              {promoProducts.map((product, index) => {
+                return (
+                  <Product
+                    product={product}
+                    key={product.id}
+                    position={index}
+                    slider
+                  />
+                )
+              })}
+            </Carrousel>
+          </S.CarrouselContainer>
+        </S.FlexContainer>
+      )}
 
       <S.ProductsView>
         <S.Heading>
@@ -83,11 +95,24 @@ export const Home = () => {
           </Text>
         </S.Heading>
         <S.FlexContainer>
-          {products.slice(15, products.length).map((product, index) => {
-            return (
-              <Product product={product} key={product.id} position={index} />
-            )
-          })}
+          {products.length ? (
+            <>
+              {products.slice(15, products.length).map((product, index) => {
+                return (
+                  <Product
+                    product={product}
+                    key={product.id}
+                    position={index}
+                  />
+                )
+              })}
+            </>
+          ) : (
+            <S.EmptyList>
+              <img src={emptyList} alt="" />
+              <Text size="4xl">Nenhum produto encontrado</Text>
+            </S.EmptyList>
+          )}
         </S.FlexContainer>
 
         {totalProducts > products.length && <Pagination />}

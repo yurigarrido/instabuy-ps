@@ -66,3 +66,15 @@ export const BannerImg = styled('img', {
   borderRadius: '$md',
   height: '38rem',
 })
+
+export const EmptyList = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '$10',
+  alignItems: 'center',
+  width: '100%',
+
+  img: {
+    maxWidth: '40rem',
+  },
+})

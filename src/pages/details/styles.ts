@@ -73,3 +73,15 @@ export const CartControl = styled(FlexContainer, {
     opacity: '.5',
   },
 })
+
+export const NotFoundProduct = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '$10',
+  alignItems: 'center',
+  width: '100%',
+
+  img: {
+    maxWidth: '40rem',
+  },
+})

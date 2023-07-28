@@ -48,3 +48,15 @@ export const ButtonContainer = styled('div', {
   display: 'flex',
   justifyContent: 'center',
 })
+
+export const NotFound = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '$10',
+  alignItems: 'center',
+  width: '100%',
+
+  img: {
+    maxWidth: '40rem',
+  },
+})

@@ -14,19 +14,43 @@ import { ProductDetails } from './models/product'
 import { useShoppingCartContext } from '@/shared/context'
 import { toast } from 'react-hot-toast'
 import { DetailsSkeleton } from './components'
+import notFoundImage from '@/shared/assets/undraw_space.svg'
 
 export const Details = () => {
   const { slug } = useParams()
 
   const [product, setProduct] = useState<ProductDetails>()
+  const [notFound, setNotFound] = useState(false)
   const { addProduct, removeProduct, getProductOnCart, deleteItemOnCart } =
     useShoppingCartContext()
 
-  const { isLoading } = useQuery('slug', () => getProductDetails(slug), {
-    onSuccess(data) {
-      setProduct(data)
+  const { isLoading } = useQuery(
+    slug || 'search',
+    () => getProductDetails(slug),
+    {
+      onSuccess(data) {
+        setProduct(data)
+      },
+      onError() {
+        toast.error(
+          'Tivemos um problema ao carregar o produto, por favor tente novamente.',
+        )
+        setNotFound(true)
+      },
     },
-  })
+  )
+
+  if (notFound)
+    return (
+      <S.Container>
+        <S.Content>
+          <S.NotFoundProduct>
+            <img src={notFoundImage} alt="" />
+            <Text size="4xl">Produto não encontrado</Text>
+          </S.NotFoundProduct>
+        </S.Content>
+      </S.Container>
+    )
 
   if (isLoading || !product) return <DetailsSkeleton />
 
