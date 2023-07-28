@@ -8,8 +8,8 @@ export const useWindowSize = () => {
 
   const getDevice = () => {
     if (windowSize.width >= 1080) return 'bigdesktop'
-    if (windowSize.width <= 1080 && windowSize.width > 768) return 'desktop'
-    if (windowSize.width <= 768 && windowSize.width > 640) return 'tablet'
+    if (windowSize.width <= 1080 && windowSize.width > 801) return 'desktop'
+    if (windowSize.width <= 800 && windowSize.width > 640) return 'tablet'
     return 'mobile'
   }
 

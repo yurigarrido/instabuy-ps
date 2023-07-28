@@ -36,10 +36,31 @@ interface Product {
   copy_of: string
 }
 
-export interface ProductsData {
+interface Banner {
+  id: string
+  image: string
+  title: string
+  is_mobile: boolean
+  is_desktop: boolean
+  link: {
+    subcategory_id: string
+  }
+  href: string
+}
+
+interface Category {
+  id: string
+  title: string
+  slug: string
+  items: Product[]
+}
+
+export interface LayoutData {
   count: number
   data: {
     promo: Product[]
+    banners: Banner[]
+    collection_items: Category[]
   }
   http_status: number
   status: string
