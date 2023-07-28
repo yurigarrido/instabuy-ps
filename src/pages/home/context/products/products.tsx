@@ -3,14 +3,21 @@ import { useCallback, useMemo, useState } from 'react'
 import { getProducts } from '../../services/getProducts'
 import { Product } from '../../models/product'
 import { useQuery } from 'react-query'
-import { getPromoProducts } from '../../services/getPromoProducts'
+import { getLayoutContent } from '../../services/getLayoutContent'
+import { Banner } from '../../models/banner'
+import { Category } from '../../models/category'
+import { useWindowSize } from '@/shared/hooks/useWindowSize'
 
 const useProducts = () => {
   const [products, setProducts] = useState<Product[]>([])
   const [promoProducts, setPromoProducts] = useState<Product[]>([])
+  const [categories, setCategories] = useState<Category[]>([])
+  const [banners, setBanners] = useState<Banner[]>([])
   const [loadingMoreProducts, setloadingMoreProducts] = useState(false)
   const [pagination, setPagination] = useState<number>(2)
   const [totalProducts, setTotalProducts] = useState(0)
+
+  const device = useWindowSize()
 
   const defaultPage = 1
   const { isLoading } = useQuery('products', () => getProducts(defaultPage), {
@@ -20,12 +27,14 @@ const useProducts = () => {
     },
   })
 
-  const { isLoading: isLoadingPromoProducts } = useQuery(
+  const { isLoading: isLoadingLayoutContent } = useQuery(
     'promoProducts',
-    () => getPromoProducts(),
+    () => getLayoutContent(),
     {
-      onSuccess(data) {
-        setPromoProducts(data.products)
+      onSuccess({ banners, categories, products }) {
+        setPromoProducts(products.list)
+        setBanners(banners)
+        setCategories(categories)
       },
     },
   )
@@ -38,20 +47,31 @@ const useProducts = () => {
     setProducts((previousProducts) => [...previousProducts, ...products])
   }, [pagination])
 
+  const isDesktop = device === 'desktop' || device === 'bigdesktop'
+  const bannersComaptibleWithDevice = useMemo(() => {
+    return banners.filter((banner) =>
+      isDesktop ? banner.isDesktop : banner.isMobile,
+    )
+  }, [banners, isDesktop])
+
   return useMemo(
     () => ({
       products,
       promoProducts,
+      banners: bannersComaptibleWithDevice,
+      categories,
       isLoading,
-      isLoadingPromoProducts,
+      isLoadingLayoutContent,
       getMoreProducts,
       totalProducts,
       loadingMoreProducts,
     }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [
+      banners,
+      categories,
       getMoreProducts,
       isLoading,
-      isLoadingPromoProducts,
       loadingMoreProducts,
       products,
       promoProducts,
