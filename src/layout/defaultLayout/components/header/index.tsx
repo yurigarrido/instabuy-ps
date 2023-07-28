@@ -4,12 +4,12 @@ import {
   UserCircle,
 } from 'phosphor-react'
 import * as S from './styles'
-import { Button } from '../button'
-import { Text } from '../text'
 import { useNavigate } from 'react-router'
 import { useShoppingCartContext } from '@/shared/context/cart/cart'
 import { useState } from 'react'
 import { ShoppingCart } from './components'
+import { Text } from '@/shared/components/text'
+import { Button } from '@/shared/components/button'
 
 export const Header = () => {
   const navigate = useNavigate()

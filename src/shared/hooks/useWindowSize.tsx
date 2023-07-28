@@ -8,9 +8,9 @@ export const useWindowSize = () => {
   useEffect(() => {
     const getDevice = () => {
       if (window?.innerWidth >= 1080) return 'bigdesktop'
+      if (window?.innerWidth <= 800 && window?.innerWidth > 640) return 'tablet'
       if (window?.innerWidth <= 1080 && window?.innerWidth > 801)
         return 'desktop'
-      if (window?.innerWidth <= 800 && window?.innerWidth > 640) return 'tablet'
       return 'mobile'
     }
     const handleResize = () => setDevice(getDevice())
