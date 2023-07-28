@@ -4,5 +4,6 @@ export interface Product {
   name: string
   slug: string
   price: number
+  promoPrice?: number
   description: string
 }

@@ -20,7 +20,7 @@ export const Details = () => {
   const { slug } = useParams()
 
   const [product, setProduct] = useState<ProductDetails>()
-  const [notFound, setNotFound] = useState(true)
+  const [notFound, setNotFound] = useState(false)
   const { addProduct, removeProduct, getProductOnCart, deleteItemOnCart } =
     useShoppingCartContext()
 

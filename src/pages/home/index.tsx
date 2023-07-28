@@ -16,7 +16,13 @@ import { HomeSkeleton } from './components/skeleton'
 import emptyList from '@/shared/assets/undraw_empty.svg'
 
 export const Home = () => {
-  const { isLoading, products, totalProducts } = useProductsContext()
+  const {
+    isLoading,
+    products,
+    totalProducts,
+    promoProducts,
+    isLoadingPromoProducts,
+  } = useProductsContext()
   const device = useWindowSize()
   const isDesktop = device === 'desktop' || device === 'bigdesktop'
   const [banners, setBanners] = useState<Banner[]>([])
@@ -27,7 +33,8 @@ export const Home = () => {
     },
   })
 
-  if (isLoading || loadingBanner) return <HomeSkeleton />
+  if (isLoading || loadingBanner || isLoadingPromoProducts)
+    return <HomeSkeleton />
 
   const itensPerPage = {
     desktop: 4.6,
@@ -54,7 +61,7 @@ export const Home = () => {
         </Banners>
       )}
 
-      {products.length && (
+      {promoProducts.length && (
         <S.FlexContainer>
           <S.CarrouselContainer>
             <S.Heading>
@@ -65,7 +72,7 @@ export const Home = () => {
             </S.Heading>
 
             <Carrousel loop itemsPerView={itensPerPage[device]} showControls>
-              {products.slice(1, 15).map((product, index) => {
+              {promoProducts.map((product, index) => {
                 return (
                   <Product
                     product={product}

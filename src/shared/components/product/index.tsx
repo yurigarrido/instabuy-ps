@@ -56,11 +56,13 @@ export const Product = ({
             {formatCurrency(product.price)}
           </Text>
         </S.Price>
-        <S.Price red>
-          <Text size="2xl" bold>
-            {formatCurrency(product.price * 1.1)}
-          </Text>
-        </S.Price>
+        {product?.promoPrice && (
+          <S.Price red>
+            <Text size="2xl" bold>
+              {formatCurrency(product.price * 1.1)}
+            </Text>
+          </S.Price>
+        )}
       </S.PriceContainer>
       <S.CartButton
         circle
