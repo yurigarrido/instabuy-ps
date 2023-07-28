@@ -10,10 +10,13 @@ import { Product } from '@/shared/components/product'
 import { Button } from '@/shared/components/button'
 import { Plus } from 'phosphor-react'
 import { SearchSkeleton } from './components'
+import { toast } from 'react-hot-toast'
+import notFoundImage from '@/shared/assets/undraw_space.svg'
 
 export const Search = () => {
   const { query } = useParams()
   const [products, setProducts] = useState<ProductType[]>([])
+  const [notFound, setNotFound] = useState(false)
   const { loading, loaded, isLoading } = useLayoutContext()
   const [loadingMoreProducts, setloadingMoreProducts] = useState(false)
   const [pagination, setPagination] = useState<number>(2)
@@ -24,11 +27,23 @@ export const Search = () => {
   const getProducts = useCallback(
     async (query: string | undefined) => {
       if (!query) return
-      loading()
-      const { products, total } = await searchProducts(query, defaultPage)
-      setProducts(products)
-      setTotalProducts(total)
-      loaded()
+      try {
+        loading()
+        const { products, total } = await searchProducts(query, defaultPage)
+        if (!products.length) {
+          setNotFound(true)
+          loaded()
+          return
+        }
+        setProducts(products)
+        setTotalProducts(total)
+        loaded()
+      } catch (error) {
+        loaded()
+        toast.error(
+          'Tivemos um problema para encontrar o produto, por favor tente novamente',
+        )
+      }
     },
     [loaded, loading],
   )
@@ -43,6 +58,7 @@ export const Search = () => {
 
   useEffect(() => {
     setTotalProducts(0)
+    setNotFound(false)
     getProducts(query)
   }, [getProducts, query])
 
@@ -51,39 +67,48 @@ export const Search = () => {
       <S.InformationsContainer>
         <Breadcrumbs />
 
-        {!!totalProducts && (
-          <>
-            <Text size="5xl" bold>
-              Resultados para {`"${query}"`}{' '}
-            </Text>
+        <>
+          <Text size="5xl" bold>
+            Resultados para {`"${query}"`}{' '}
+          </Text>
+          {!!totalProducts && (
             <Text size="xl"> {products.length} resultados encontrados</Text>
-          </>
-        )}
+          )}
+        </>
       </S.InformationsContainer>
 
       {isLoading ? (
         <SearchSkeleton />
       ) : (
         <S.ProductsView>
-          <S.FlexContainer>
-            {products.map((product) => {
-              return <Product product={product} key={product.id} />
-            })}
-          </S.FlexContainer>
-          {totalProducts > products.length && (
-            <S.ButtonContainer>
-              <Button
-                size="lg"
-                color="orange"
-                weight="bold"
-                leftIcon={<Plus size={24} />}
-                onClick={getMoreProducts}
-                loading={loadingMoreProducts}
-                disabled={loadingMoreProducts}
-              >
-                Carregar mais
-              </Button>
-            </S.ButtonContainer>
+          {notFound ? (
+            <S.NotFound>
+              <img src={notFoundImage} alt="" />
+              <Text size="4xl">Produto não encontrado</Text>
+            </S.NotFound>
+          ) : (
+            <>
+              <S.FlexContainer>
+                {products.map((product) => {
+                  return <Product product={product} key={product.id} />
+                })}
+              </S.FlexContainer>
+              {totalProducts > products.length && (
+                <S.ButtonContainer>
+                  <Button
+                    size="lg"
+                    color="orange"
+                    weight="bold"
+                    leftIcon={<Plus size={24} />}
+                    onClick={getMoreProducts}
+                    loading={loadingMoreProducts}
+                    disabled={loadingMoreProducts}
+                  >
+                    Carregar mais
+                  </Button>
+                </S.ButtonContainer>
+              )}
+            </>
           )}
         </S.ProductsView>
       )}

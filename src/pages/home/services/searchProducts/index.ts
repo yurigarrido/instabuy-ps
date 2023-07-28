@@ -12,28 +12,32 @@ export const searchProducts = async (
   query: string,
   page: number,
 ): Promise<ProductsResponse> => {
-  const { data } = await api.get<ProductsData>(endpoints.search, {
-    params: {
-      subdomain: 'supermercado',
-      N: 30,
-      page,
-      search: query,
-    },
-  })
+  try {
+    const { data } = await api.get<ProductsData>(endpoints.search, {
+      params: {
+        subdomain: 'supermercado',
+        N: 30,
+        page,
+        search: query,
+      },
+    })
 
-  const parsedProducts = data.data.map((product) => {
+    const parsedProducts = data.data.map((product) => {
+      return {
+        id: product.id,
+        imageUrl: product.images[0],
+        description: product.description,
+        name: product.name,
+        slug: product.slug,
+        price: product.prices[0].price,
+      }
+    })
+
     return {
-      id: product.id,
-      imageUrl: product.images[0],
-      description: product.description,
-      name: product.name,
-      slug: product.slug,
-      price: product.prices[0].price,
+      products: parsedProducts,
+      total: data.count,
     }
-  })
-
-  return {
-    products: parsedProducts,
-    total: data.count,
+  } catch (error) {
+    throw new Error()
   }
 }
