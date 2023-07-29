@@ -99,6 +99,7 @@ export const ButtonsContainer = styled(FlexContainer, {
   },
 })
 export const LogoContainer = styled(FlexContainer, {
+  cursor: 'pointer',
   '@mobile': {
     justifyContent: 'center',
   },
