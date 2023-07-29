@@ -12,6 +12,7 @@ import { HomeSkeleton } from './components/skeleton'
 import emptyList from '@/shared/assets/undraw_empty.svg'
 import { useState } from 'react'
 import { Button } from '@/shared/components/button'
+import { useNavigate } from 'react-router-dom'
 
 export const Home = () => {
   const {
@@ -23,6 +24,7 @@ export const Home = () => {
     banners,
     categories,
   } = useProductsContext()
+  const navigate = useNavigate()
   const [showAllCategories, setShowAllCategories] = useState(false)
   const device = useWindowSize()
   const isMobile = device === 'mobile'
@@ -48,6 +50,7 @@ export const Home = () => {
                 key={banner.id}
                 src={generateBannerUrl(banner.imageUrl)}
                 alt=""
+                onClick={() => navigate('/search/ofertas')}
               />
             )
           })}

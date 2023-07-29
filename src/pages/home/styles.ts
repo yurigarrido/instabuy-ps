@@ -65,6 +65,7 @@ export const BannerImg = styled('img', {
   objectFit: 'contain',
   borderRadius: '$md',
   height: '38rem',
+  cursor: 'pointer',
 })
 
 export const EmptyList = styled('div', {
