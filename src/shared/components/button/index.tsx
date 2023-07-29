@@ -19,7 +19,7 @@ export type ButtonProps = Omit<ComponentProps<typeof Container>, 'css'> & {
 const ButtonFC: ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
   {
     alignContent = 'center',
-    color = 'primary',
+    color = 'green',
     size = 'sm',
     weight = 'normal',
     font = 'sans',

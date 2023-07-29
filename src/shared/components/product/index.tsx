@@ -1,5 +1,5 @@
 import { generateImageUrl } from '@/shared/constants'
-import { Product as ProductType } from '../../../pages/home/models/product'
+import { Product as ProductType } from '../../models/product'
 import * as S from './styles'
 import { useNavigate } from 'react-router-dom'
 import { formatCurrency } from '@/shared/utils/formatter'

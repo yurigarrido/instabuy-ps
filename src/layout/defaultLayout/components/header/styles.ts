@@ -1,4 +1,4 @@
-import { styled } from '../../../../stitches.config'
+import { styled } from '../../../../../stitches.config'
 
 export const Wrapper = styled('div', {
   position: 'fixed',
@@ -14,7 +14,7 @@ export const Wrapper = styled('div', {
 export const Header = styled('header', {
   width: '100%',
 
-  padding: '$8',
+  padding: '$8 0',
 
   display: 'flex',
   alignItems: 'center',
@@ -99,6 +99,7 @@ export const ButtonsContainer = styled(FlexContainer, {
   },
 })
 export const LogoContainer = styled(FlexContainer, {
+  cursor: 'pointer',
   '@mobile': {
     justifyContent: 'center',
   },

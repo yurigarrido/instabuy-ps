@@ -1,11 +1,11 @@
-import { Text } from '../text'
 import Informations, { Information } from './components/informations'
 import * as S from './styles'
 import { PhoneCall, Envelope } from 'phosphor-react'
 
-import instagram from '../../assets/instagram.svg'
-import facebook from '../../assets/facebook.svg'
-import whatsapp from '../../assets/whatsapp.svg'
+import instagram from '@/shared/assets/instagram.svg'
+import facebook from '@/shared/assets/facebook.svg'
+import whatsapp from '@/shared/assets/whatsapp.svg'
+import { Text } from '@/shared/components/text'
 
 export const Footer = () => {
   const institutional: Information[] = [

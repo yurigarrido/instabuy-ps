@@ -1,5 +1,5 @@
-import { keyframes, styled } from '../../../../../../stitches.config'
 import * as Portal from '@radix-ui/react-portal'
+import { keyframes, styled } from '../../../../../../../stitches.config'
 
 export const Container = styled(Portal.Root, {
   height: '100%',
@@ -72,6 +72,9 @@ export const Main = styled('main', {
   display: 'flex',
   flexDirection: 'column',
   height: '100%',
+
+  overflowY: 'scroll',
+  overflowX: 'hidden',
 })
 
 export const Footer = styled('div', {

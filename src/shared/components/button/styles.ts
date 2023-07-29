@@ -109,7 +109,7 @@ export const Container = styled('button', {
       },
     },
     color: {
-      primary: {
+      green: {
         $$background: '$colors$green2',
         $$color: 'white',
       },

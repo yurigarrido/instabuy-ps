@@ -1,7 +1,7 @@
 import constate from 'constate'
 import { useCallback, useMemo, useState } from 'react'
 import { getProducts } from '../../services/getProducts'
-import { Product } from '../../models/product'
+import { Product } from '../../../../shared/models/product'
 import { useQuery } from 'react-query'
 import { getLayoutContent } from '../../services/getLayoutContent'
 import { Banner } from '../../models/banner'

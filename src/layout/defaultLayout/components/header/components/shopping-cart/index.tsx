@@ -34,6 +34,12 @@ export const ShoppingCart = ({ open, close }: ShoppingCartProps) => {
     }
   })
 
+  const handleOnClick = () => {
+    toast.success('Pedido realizado com sucesso!')
+    closeCart()
+    cleanShoopingCart()
+  }
+
   if (!open) return
 
   return (
@@ -70,6 +76,7 @@ export const ShoppingCart = ({ open, close }: ShoppingCartProps) => {
             alignContent="space"
             weight="bold"
             disabled={!cartProducts.length}
+            onClick={handleOnClick}
           >
             <div>Finalizar Compra</div>
             <div>{formatCurrency(finalPrice)}</div>

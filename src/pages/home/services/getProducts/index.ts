@@ -1,6 +1,6 @@
 import { api } from '@/shared/api'
 import { ProductsData } from './types'
-import { Product } from '../../models/product'
+import { Product } from '../../../../shared/models/product'
 import { endpoints } from '@/shared/api/endpoints'
 
 export interface ProductsResponse {

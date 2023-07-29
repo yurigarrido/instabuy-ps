@@ -1,26 +1,19 @@
 import { useState, useEffect } from 'react'
 
 export const useWindowSize = () => {
-  const [windowSize, setWindowSize] = useState({
-    width: 0,
-    height: 0,
-  })
-
-  const getDevice = () => {
-    if (windowSize.width >= 1080) return 'bigdesktop'
-    if (windowSize.width <= 1080 && windowSize.width > 801) return 'desktop'
-    if (windowSize.width <= 800 && windowSize.width > 640) return 'tablet'
-    return 'mobile'
-  }
-
-  const device = getDevice()
+  const [device, setDevice] = useState<
+    'desktop' | 'bigdesktop' | 'mobile' | 'tablet'
+  >('desktop')
 
   useEffect(() => {
-    const handleResize = () =>
-      setWindowSize({
-        width: window?.innerWidth,
-        height: window?.innerHeight,
-      })
+    const getDevice = () => {
+      if (window?.innerWidth >= 1080) return 'bigdesktop'
+      if (window?.innerWidth <= 800 && window?.innerWidth > 640) return 'tablet'
+      if (window?.innerWidth <= 1080 && window?.innerWidth > 801)
+        return 'desktop'
+      return 'mobile'
+    }
+    const handleResize = () => setDevice(getDevice())
 
     window.addEventListener('resize', handleResize)
 

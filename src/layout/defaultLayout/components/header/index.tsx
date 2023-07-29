@@ -4,12 +4,13 @@ import {
   UserCircle,
 } from 'phosphor-react'
 import * as S from './styles'
-import { Button } from '../button'
-import { Text } from '../text'
 import { useNavigate } from 'react-router'
 import { useShoppingCartContext } from '@/shared/context/cart/cart'
 import { useState } from 'react'
 import { ShoppingCart } from './components'
+import { Text } from '@/shared/components/text'
+import { Button } from '@/shared/components/button'
+import { toast } from 'react-hot-toast'
 
 export const Header = () => {
   const navigate = useNavigate()
@@ -57,12 +58,19 @@ export const Header = () => {
         </S.SearchBar>
 
         <S.ButtonsContainer>
-          <Button color="white" full leftIcon={<UserCircle size={20} />}>
+          <Button
+            color="white"
+            full
+            leftIcon={<UserCircle size={20} />}
+            onClick={() =>
+              toast.loading('Essa funcionalidade estará pronta em breve')
+            }
+          >
             Minha conta
           </Button>
           <Button
             full
-            color="primary"
+            color="green"
             leftIcon={<ShoppingIcon size={20} />}
             onClick={openShoppingCart}
           >

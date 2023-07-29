@@ -1,9 +1,10 @@
 import { Outlet } from 'react-router-dom'
 import * as S from './styles'
-import { Header } from '@/shared/components/header'
-import { Footer } from '@/shared/components/footer'
 import { useShoppingCartContext } from '@/shared/context'
 import { useLayoutContext } from '../context'
+import { Header } from './components/header'
+import { Footer } from './components/footer'
+import { Categories } from './components/categories'
 
 export const DefaultLayout = () => {
   const { cartOpen } = useShoppingCartContext()
@@ -12,6 +13,7 @@ export const DefaultLayout = () => {
     <S.LayoutCountainer hidden={cartOpen || isLoading}>
       <Header />
       <S.Content>
+        <Categories />
         <Outlet />
         <Footer />
       </S.Content>

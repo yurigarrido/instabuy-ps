@@ -2,7 +2,7 @@ import { Text } from '@/shared/components/text'
 import * as S from './styles'
 import { generateBannerUrl } from '@/shared/constants'
 import { Carrousel } from '@/shared/components/carrousel'
-import { Lightning, MagnifyingGlass, Plus } from 'phosphor-react'
+import { CaretRight, Lightning, MagnifyingGlass, Plus } from 'phosphor-react'
 import { Pagination } from './components'
 import { useProductsContext } from './context/products/products'
 import { Banners } from '@/shared/components/banners'
@@ -12,6 +12,7 @@ import { HomeSkeleton } from './components/skeleton'
 import emptyList from '@/shared/assets/undraw_empty.svg'
 import { useState } from 'react'
 import { Button } from '@/shared/components/button'
+import { Link, useNavigate } from 'react-router-dom'
 
 export const Home = () => {
   const {
@@ -23,6 +24,7 @@ export const Home = () => {
     banners,
     categories,
   } = useProductsContext()
+  const navigate = useNavigate()
   const [showAllCategories, setShowAllCategories] = useState(false)
   const device = useWindowSize()
   const isMobile = device === 'mobile'
@@ -48,6 +50,7 @@ export const Home = () => {
                 key={banner.id}
                 src={generateBannerUrl(banner.imageUrl)}
                 alt=""
+                onClick={() => navigate('/search/ofertas')}
               />
             )
           })}
@@ -58,10 +61,12 @@ export const Home = () => {
         <S.FlexContainer>
           <S.CarrouselContainer>
             <S.Heading>
-              <Lightning size={36} />
-              <Text size="5xl" bold>
-                Ofertas
-              </Text>
+              <div>
+                <Lightning size={36} />
+                <Text size="5xl" bold>
+                  Ofertas
+                </Text>
+              </div>
             </S.Heading>
 
             <Carrousel loop itemsPerView={itensPerPage[device]} showControls>
@@ -91,6 +96,10 @@ export const Home = () => {
                     <Text size="5xl" bold>
                       {category.name}
                     </Text>
+                    <div>
+                      <Link to={`/category/${category.slug}`}>Ver mais</Link>
+                      <CaretRight size={18} />
+                    </div>
                   </S.Heading>
 
                   <Carrousel
@@ -125,6 +134,10 @@ export const Home = () => {
                     <Text size="5xl" bold>
                       {category.name}
                     </Text>
+                    <div>
+                      <Link to={`/category/${category.slug}`}>Ver mais</Link>
+                      <CaretRight size={18} />
+                    </div>
                   </S.Heading>
 
                   <Carrousel
@@ -161,10 +174,12 @@ export const Home = () => {
 
       <S.ProductsView>
         <S.Heading>
-          <MagnifyingGlass size={36} />
-          <Text size="5xl" bold>
-            Mais Procurados
-          </Text>
+          <div>
+            <MagnifyingGlass size={36} />
+            <Text size="5xl" bold>
+              Mais Procurados
+            </Text>
+          </div>
         </S.Heading>
         <S.FlexContainer>
           {products.length ? (

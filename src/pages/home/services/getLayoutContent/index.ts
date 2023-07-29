@@ -1,7 +1,7 @@
 import { api } from '@/shared/api'
 import { LayoutData } from './types'
 import { endpoints } from '@/shared/api/endpoints'
-import { Product } from '../../models/product'
+import { Product } from '../../../../shared/models/product'
 import { Banner } from '../../models/banner'
 import { Category } from '../../models/category'
 
