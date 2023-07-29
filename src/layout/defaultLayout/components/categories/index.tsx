@@ -1,24 +1,30 @@
 import { useProductsContext } from '@/pages/home/context/products/products'
 import * as S from './styles'
 import { Button } from '@/shared/components/button'
-import { House, List, Tag } from 'phosphor-react'
+import { House } from 'phosphor-react'
+import { useNavigate, useParams } from 'react-router-dom'
 
 export const Categories = () => {
   const { categories } = useProductsContext()
+  const { slug } = useParams()
+  const navigate = useNavigate()
   return (
     <S.NavBar>
       <S.Container>
-        <Button color="white" leftIcon={<House size={24} />}>
+        <Button
+          color="white"
+          leftIcon={<House size={24} />}
+          onClick={() => navigate('/')}
+        >
           Início
         </Button>
-        <Button color="white" leftIcon={<List size={24} />}>
-          Todas Categorias
-        </Button>
-        <Button color="white" leftIcon={<Tag size={24} />}>
-          Ofertas
-        </Button>
-        {categories.slice(0, 4).map((category) => (
-          <Button color="white" key={category.id}>
+
+        {categories.slice(0, 6).map((category) => (
+          <Button
+            onClick={() => navigate(`/category/${category.slug}`)}
+            color={slug === category.slug ? 'green' : 'white'}
+            key={category.id}
+          >
             {category.name}
           </Button>
         ))}

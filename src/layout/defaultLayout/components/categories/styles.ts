@@ -11,15 +11,15 @@ export const Container = styled('div', {
   overlow: 'hidden',
   gap: '$4',
 
-  margin: '$2',
-
   '@bigdesktop': {
-    margin: '$8 auto',
+    margin: '$4 auto',
     maxWidth: '150rem',
   },
 })
 
 export const NavBar = styled('nav', {
+  padding: '$2',
+
   width: '100%',
   backgroundColor: '$white',
 

@@ -14,7 +14,7 @@ export const Wrapper = styled('div', {
 export const Header = styled('header', {
   width: '100%',
 
-  padding: '$8',
+  padding: '$8 0',
 
   display: 'flex',
   alignItems: 'center',
