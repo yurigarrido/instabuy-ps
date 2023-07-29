@@ -123,7 +123,7 @@ export const Home = () => {
             )
           })}
 
-      {categories.length && showAllCategories ? (
+      {!!categories.length && showAllCategories ? (
         categories
           .slice(Math.round(categories.length / 2), categories.length)
           .map((category) => {
