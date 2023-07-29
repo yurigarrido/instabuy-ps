@@ -12,7 +12,7 @@ export const Container = styled('div', {
   overlow: 'hidden',
   gap: '$4',
 
-  margin: '2 rem',
+  margin: '$10 auto',
 
   '@bigdesktop': {
     margin: '$10 auto',
